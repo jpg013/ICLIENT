@@ -1,0 +1,143 @@
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .graphFilter-container {
+    width: 200px;
+    background: transparent;
+    height: 125px;
+    position: absolute;
+    top: -125px;
+    right: 10px;
+    overflow-y: hidden;
+  }
+
+  .graphFilter {
+    position: absolute;
+    display: flex;
+    width: 200px;
+    transition: all 0.25s ease-out;
+    flex-wrap: wrap;
+    z-index: 1;
+  }
+
+  .graphFilter-open {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    top: 0px;
+  }
+
+  .graphFilter-closed {
+    top: 95px;
+  }
+
+  .graphFilter-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 1em;
+    color: #F0F0F0;
+    padding-left: 15px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .graphFilter-closed .graphFilter-header {
+    background-color: #999999;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 5px;
+  }
+
+  .graphFilter-open .graphFilter-header {
+    background-color: #4f5959;
+  }
+
+  .graphFilters-filterBody {
+    display: flex;
+    width: 100%;
+    background-color: #F0F0F0;
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+
+  .graphFilters-filterBody:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .graphFilters-filterBody_closed {
+    display: none;
+  }
+
+  .graphFilter-filterCheckbox {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 20px;
+    align-items: center;
+  }
+
+  .graphFilter-filterCheckbox_label {
+    padding-left: 10px;
+    margin-top: -3px;
+  }
+}
+
+@media screen and (min-device-width: 1600px) {
+  .graphFilter {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    width: 200px;
+    transition: all 10s ease-out;
+    flex-wrap: wrap;
+  }
+
+  .graphFilter-open {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    top: -250px;
+  }
+
+  .graphFilter-closed {
+    top: -30px;
+  }
+
+  .graphFilter-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 1em;
+    color: #F0F0F0;
+    padding-left: 15px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .graphFilter-closed .graphFilter-header {
+    background-color: #999999;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 5px;
+  }
+
+  .graphFilter-open .graphFilter-header {
+    background-color: #4f5959;
+  }
+
+  .graphFilters-filterBody {
+    display: flex;
+    width: 100%;
+    background-color: #F0F0F0;
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+
+  .graphFilters-filterBody_closed {
+    display: none;
+  }
+
+  .graphFilter-filterCheckbox {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .graphFilter-filterCheckbox_label {
+    padding-left: 10px;
+    margin-top: -1px;
+  }
+}

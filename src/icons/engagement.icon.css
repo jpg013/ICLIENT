@@ -1,0 +1,7 @@
+.engagementIcon {
+  width: 168px;
+}
+
+.engagementIcon > * {
+  fill: #F0F0F0;
+}

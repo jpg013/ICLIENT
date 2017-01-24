@@ -1,0 +1,9 @@
+.campaignIcon {
+  width: 168px;
+}
+
+.campaignIcon > * {
+  fill: #F0F0F0;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+}

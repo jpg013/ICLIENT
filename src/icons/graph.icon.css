@@ -1,0 +1,7 @@
+.graphIcon {
+  width: 168px;
+}
+
+.graphIcon > * {
+  fill: #F0F0F0;
+}

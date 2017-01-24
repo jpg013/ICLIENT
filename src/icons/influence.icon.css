@@ -1,0 +1,13 @@
+.influenceIcon {
+  width: 168px;
+}
+
+.influenceIcon > * {
+  fill: #F0F0F0;
+}
+
+.influenceIcon_dot {
+  stroke: #A9D3CC;
+  stroke-width: 10;
+  stroke-miterlimit: 10;
+}

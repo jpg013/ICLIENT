@@ -1,0 +1,9 @@
+.connectionIcon {
+  width: 168px;
+}
+
+.connectionIcon > * {
+  fill: #F0F0F0;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+}
