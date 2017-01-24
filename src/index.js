@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './container/app.container';
+import routes from './routes';
+import { Router, browserHistory } from 'react-router';
 import './index.css';
 
 render(
-  <App />,
+  <Router history={browserHistory} routes={routes}></Router>,
   document.getElementById('root')
 );

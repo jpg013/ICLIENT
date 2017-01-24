@@ -8,18 +8,18 @@ import './side-menu.common.css';
 
 const sideNav = () => (
   <div className="sideMenu">
-    <div className="sideMenu-btn activeItem">
+    <Link to="/influencers" className="sideMenu-btn activeItem">
       <InfluenceIcon />
-    </div>
-    <div className="sideMenu-btn activeItem">
+    </Link>
+    <Link to="/influencers" className="sideMenu-btn activeItem">
       <EngagementIcon />
-    </div>
-    <div className="sideMenu-btn activeItem">
+    </Link>
+    <Link to="/influencers" className="sideMenu-btn activeItem">
       <ConnectionIcon />
-    </div>
-    <div className="sideMenu-btn activeItem">
+    </Link>
+    <Link to="/influencers" className="sideMenu-btn activeItem">
       <CampaignIcon />
-    </div>
+    </Link>
   </div>
 )
 

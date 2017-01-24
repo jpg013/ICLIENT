@@ -1,5 +1,5 @@
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
-  .graphDock {
+  .dock {
     display: flex;
     position: absolute;
     left: 112px;
@@ -8,15 +8,15 @@
     transition: top .25s ease-out;
   }
 
-  .graphDock_closed {
+  .dock_closed {
     top: calc(100% - 80px);
   }
 
-  .graphDock_open {
+  .dock_open {
     top: calc(100% - 187px);
   }
 
-  .graphDock-graphBtn {
+  .dock-graphBtn {
     height: 86px;
     width: 86px;
     border-radius: 50%;
