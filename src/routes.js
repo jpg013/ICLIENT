@@ -17,7 +17,7 @@ function onEnterHome() {
 export default function getRoutes(store) {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={Home}  onEnter={onEnterHome.bind(store)} />
       <Route path="influencers" component={Influencers} onEnter={onEnterInfluencers.bind(store)}/>
     </Route>
   );

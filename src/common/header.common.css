@@ -27,12 +27,20 @@
   }
 
   .header-welcome {
-    padding: 0 10px;
+    padding: 0;
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: flex-start;
     background: transparent;
+  }
+
+  .header-gear {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
   }
 }
 
@@ -74,5 +82,13 @@
     align-items: center;
     justify-content: flex-start;
     background: transparent;
+  }
+
+  .header-gear {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 50px
   }
 }

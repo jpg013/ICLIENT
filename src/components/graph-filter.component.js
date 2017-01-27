@@ -1,35 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import './graph-filter.component.css';
 import classNames from 'classnames';
 
-class GraphFilter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      position: 'closed'
-    }
-  }
+const GraphFilter = ({handleFilterClick}) => {
+  function getGraphFilterClassName() {
+    return ('graphFilter graphFilter-closed');
 
-  componentWillUpdate(nextProps, nextState) {
-
-  }
-
-  onHeaderClick() {
-    this.setState({
-      'position': this.state.position === 'open' ? 'closed' : 'open'
-    });
-  }
-
-  getGraphFilterClassName() {
+    /*
     return classNames(
       'graphFilter',
        {'graphFilter-closed': this.state.position === 'closed'},
        {'graphFilter-open': this.state.position === 'open'}
     );
+    */
   }
 
-  renderAllFilters() {
+  function renderAllFilters() {
     return (
       <div className="graphFilters-filterBody">
         <div className="regularCheckbox graphFilter-filterCheckbox">
@@ -51,22 +38,18 @@ class GraphFilter extends Component {
     )
   }
 
-  renderSelectedFilters() {
-
-  }
-
-  render() {
-    const graphFilterClassName = this.getGraphFilterClassName();
-
-    return (
-      <div className="graphFilter-container">
-        <div className={graphFilterClassName}>
-          <div className="graphFilter-header" onClick={this.onHeaderClick.bind(this)}>Add Filter Data</div>
-          {this.renderAllFilters()}
-        </div>
+  return (
+    <div className="graphFilter-container">
+      <div className={getGraphFilterClassName()}>
+        <div className="graphFilter-header" onClick={handleFilterClick}>Add Filter Data</div>
+        {renderAllFilters()}
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+GraphFilter.PropTypes = {
+  handleFilterClick: PropTypes.func.isRequired
+};
 
 export default GraphFilter;

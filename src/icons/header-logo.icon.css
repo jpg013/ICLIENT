@@ -1,0 +1,9 @@
+.headerLogoIcon {
+  width: 145px;
+  height: 52px;
+  padding: 10px;
+}
+
+.headerLogoIcon > * {
+  fill: #F0F0F0;
+}

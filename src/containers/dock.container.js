@@ -14,13 +14,7 @@ class GraphDock extends Component {
 
   getDockClass() {
     let dockClass = 'dock ';
-
-    if (this.props.dock.get('state') === 'active') {
-      dockClass += 'dock_open';
-    } else {
-      dockClass += 'dock_closed';
-    }
-    return dockClass;
+    return dockClass += (this.props.dock.get('state') === 'active') ? 'dock_open' : 'dock_closed';
   }
 
   render() {
@@ -30,7 +24,7 @@ class GraphDock extends Component {
           <GraphIcon />
         </div>
         <SubjectCarousel />
-        <GraphFilter />
+        <GraphFilter handleFilterClick={() => this.props.onFilterClick()}/>
       </div>
     );
   }
@@ -38,7 +32,8 @@ class GraphDock extends Component {
 
 GraphDock.propTypes = {
   dock: PropTypes.object,
-  graphFilter: PropTypes.object
+  graphFilter: PropTypes.object,
+  onFilterClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -52,7 +47,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onFilterClick: () => {
       alert('holy moly!!!!');
-      dispatch(GraphFilterStateAction());
+      //dispatch(GraphFilterStateAction());
     }
   }
 }

@@ -1,0 +1,8 @@
+.gearIcon {
+  width: 22px;
+  heigth: 22px;
+}
+
+.gearIcon > * {
+  fill: #6D9DBF;
+}
