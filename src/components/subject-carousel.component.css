@@ -1,6 +1,16 @@
 .subjectCarousel-container {
-  background-color: #999999;
+  background-color: #b5bebd;
   height: 100%;
   width: 100%;
   z-index: 1000;
+  display: flex;
+}
+
+.subjectCarousel_centerStage {
+  height: 63px;
+  width: 176px;
+  background-color: #4f5959;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 88px);
 }

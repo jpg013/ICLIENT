@@ -1,29 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import GraphIcon from '../icons/graph.icon';
 import GraphFilter from '../components/graph-filter.component';
 import SubjectCarousel from '../components/subject-carousel.component';
 import { browserHistory } from 'react-router';
+import GraphFilterStateAction from '../actions/graph-filter.actions'
+import { connect } from 'react-redux';
 import './dock.container.css';
 
 class GraphDock extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      position: 'closed'
-    }
-
-    const onRouteChange = location => {
-      this.setState({
-        position: location.pathname === '/influencers' ? 'open' : 'closed'
-      });
-    }
-
-    browserHistory.listen(onRouteChange);
   }
 
   getDockClass() {
     let dockClass = 'dock ';
-    if (this.state.position === 'open') {
+
+    if (this.props.dock.get('state') === 'active') {
       dockClass += 'dock_open';
     } else {
       dockClass += 'dock_closed';
@@ -44,4 +36,27 @@ class GraphDock extends Component {
   }
 }
 
-export default GraphDock;
+GraphDock.propTypes = {
+  dock: PropTypes.object,
+  graphFilter: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    dock: state.dock,
+    graphFilter: state.graphFilter
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFilterClick: () => {
+      alert('holy moly!!!!');
+      dispatch(GraphFilterStateAction());
+    }
+  }
+}
+
+const ConnectedGraphDock = connect(mapStateToProps, mapDispatchToProps)(GraphDock);
+
+export default ConnectedGraphDock;

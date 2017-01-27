@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Header from '../common/header.common';
 import SideMenu from '../common/side-menu.common';
 import GraphDock from './dock.container';
@@ -16,5 +16,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.object.isRequired
+};
 
 export default App;
