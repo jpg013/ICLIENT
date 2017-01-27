@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import PlusIcon from '../icons/plus.icon';
 import './graph-filter.component.css';
 import classNames from 'classnames';
 
@@ -41,7 +42,10 @@ const GraphFilter = ({handleFilterClick}) => {
   return (
     <div className="graphFilter-container">
       <div className={getGraphFilterClassName()}>
-        <div className="graphFilter-header" onClick={handleFilterClick}>Add Filter Data</div>
+        <div className="graphFilter-header" onClick={handleFilterClick}>
+          <PlusIcon />
+          <span className="graphFilter-header_text">Add Filter Data</span>
+        </div>
         {renderAllFilters()}
       </div>
     </div>

@@ -38,6 +38,11 @@
     cursor: pointer;
   }
 
+  .graphFilter-header_text {
+    color: currentColor;
+    padding-left: 15px;
+  }
+
   .graphFilter-closed .graphFilter-header {
     background-color: #b5bebd;
     border-top-right-radius: 4px;
