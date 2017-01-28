@@ -23,14 +23,24 @@ body a {
   }
 }
 
-.activeItem {
+.actionItem {
   background-color: #6d9cbe;
   cursor: pointer;
   transition: background-color 0.10s;
 }
 
-.activeItem:hover {
+.actionItem:hover {
   background-color: #79bbe0;
+}
+
+.actionItem_active {
+  background-color: #79bbe0;
+  pointer-events: none;
+}
+
+.actionItem_inactive {
+  background-color: #b5bebd;
+  pointer-events: none;
 }
 
 .regularCheckbox {

@@ -1,20 +1,18 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { PropTypes } from 'react';
 import PlusIcon from '../icons/plus.icon';
 import './graph-filter.component.css';
 import classNames from 'classnames';
 
-const GraphFilter = ({handleFilterClick}) => {
+const GraphFilter = ({handleFilterClick, dockActive, graphFilter}) => {
   function getGraphFilterClassName() {
-    return ('graphFilter graphFilter-closed');
-
-    /*
+    if (!dockActive) {
+      return ('graphFilter graphFilter-closed graphFilter-inactive');
+    }
     return classNames(
       'graphFilter',
-       {'graphFilter-closed': this.state.position === 'closed'},
-       {'graphFilter-open': this.state.position === 'open'}
+       {'graphFilter-closed': graphFilter.get('state') === 'closed'},
+       {'graphFilter-open': graphFilter.get('state') === 'open'}
     );
-    */
   }
 
   function renderAllFilters() {
@@ -42,7 +40,7 @@ const GraphFilter = ({handleFilterClick}) => {
   return (
     <div className="graphFilter-container">
       <div className={getGraphFilterClassName()}>
-        <div className="graphFilter-header" onClick={handleFilterClick}>
+        <div className="graphFilter-header" onClick={() => dockActive ? handleFilterClick() : undefined}>
           <PlusIcon />
           <span className="graphFilter-header_text">Add Filter Data</span>
         </div>
@@ -52,8 +50,10 @@ const GraphFilter = ({handleFilterClick}) => {
   )
 }
 
-GraphFilter.PropTypes = {
-  handleFilterClick: PropTypes.func.isRequired
+GraphFilter.propTypes = {
+  handleFilterClick: PropTypes.func.isRequired,
+  dockActive: PropTypes.bool,
+  filterPosition: PropTypes.object
 };
 
 export default GraphFilter;

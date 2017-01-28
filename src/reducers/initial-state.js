@@ -1,11 +1,11 @@
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 
 export default Map({
-  dock: Map({
-    state: 'inactive',
-  }),
+  dock: Map({ }),
   graphFilter: Map({
     state: 'closed',
     geography: undefined
-  })
+  }),
+  influencers: Map({}),
+  route: Map({}),
 });

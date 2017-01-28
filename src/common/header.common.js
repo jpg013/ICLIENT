@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import HeaderLogoIcon from '../icons/header-logo.icon';
 import GearIcon from '../icons/gear.icon'
@@ -14,7 +14,7 @@ const header = () => (
       <GearIcon />
     </div>
     <Link to="/logout">
-      <div className="header-logout activeItem">Sign Out</div>
+      <div className="header-logout actionItem">Sign Out</div>
     </Link>
   </div>
 )

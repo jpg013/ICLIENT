@@ -1,12 +1,14 @@
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
   .graphFilter-container {
-    width: 200px;
+    width: 220px;
     background: transparent;
     height: 125px;
     position: absolute;
     top: -125px;
     right: 10px;
     overflow-y: hidden;
+    display: flex;
+    justify-content: center;
   }
 
   .graphFilter {
@@ -47,6 +49,11 @@
     background-color: #b5bebd;
     border-top-right-radius: 4px;
     border-top-left-radius: 5px;
+  }
+
+  .graphFilter-inactive {
+    pointer-events: none;
+    cursor: none;
   }
 
   .graphFilter-open .graphFilter-header {

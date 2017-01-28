@@ -6,6 +6,7 @@
     right: 0;
     bottom: 0;
     transition: top .25s ease-out;
+    background-color: #b5bebd;
   }
 
   .dock_closed {

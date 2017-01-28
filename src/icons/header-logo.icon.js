@@ -2,7 +2,7 @@ import React from 'react';
 import './header-logo.icon.css';
 
 const HeaderLogoIcon = () => (
-  <svg className="headerLogoIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 52" enable-background="new 0 0 145 52" >
+  <svg className="headerLogoIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 52" enableBackground="new 0 0 145 52" >
   <g>
   	<g>
   		<path d="M2.852,24.077c-0.604-0.603-0.905-1.319-0.905-2.154c0-0.833,0.302-1.551,0.905-2.154

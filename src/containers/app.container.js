@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Header from '../common/header.common';
 import SideMenu from '../common/side-menu.common';
 import GraphDock from './dock.container';
+import { connect } from 'react-redux';
 import './app.container.css';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <SideMenu />
+        <SideMenu route={this.props.route}/>
         <GraphDock />
         {this.props.children}
       </div>
@@ -18,7 +19,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  route: PropTypes.object
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    route: state.get('route')
+  };
+}
+
+const ConnectedApp = connect(mapStateToProps)(App);
+export default ConnectedApp;

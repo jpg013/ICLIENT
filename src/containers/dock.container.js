@@ -2,29 +2,43 @@ import React, { Component, PropTypes } from 'react';
 import GraphIcon from '../icons/graph.icon';
 import GraphFilter from '../components/graph-filter.component';
 import SubjectCarousel from '../components/subject-carousel.component';
-import { browserHistory } from 'react-router';
-import GraphFilterStateAction from '../actions/graph-filter.actions'
+import { graphFilterStateAction } from '../actions/graph-filter.actions';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import './dock.container.css';
 
 class GraphDock extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getDockClass() {
     let dockClass = 'dock ';
-    return dockClass += (this.props.dock.get('state') === 'active') ? 'dock_open' : 'dock_closed';
+    return dockClass += this.props.dockActive ? 'dock_open' : 'dock_closed';
+  }
+
+  getGraphBtnClassNames() {
+    return classNames(
+      'dock-graphBtn',
+       'actionItem',
+       {'actionItem_inactive': !this.props.dockActive}
+    );
+  }
+
+  renderSubjectCarousel() {
+    return this.props.dockActive ? <SubjectCarousel /> : undefined
   }
 
   render() {
     return (
       <div className={this.getDockClass()}>
-        <div className="dock-graphBtn activeItem">
+        <div className={this.getGraphBtnClassNames()}>
           <GraphIcon />
         </div>
-        <SubjectCarousel />
-        <GraphFilter handleFilterClick={() => this.props.onFilterClick()}/>
+
+        {this.renderSubjectCarousel()}
+
+        <GraphFilter
+          handleFilterClick={() => this.props.onFilterClick()}
+          dockActive={this.props.dockActive}
+          graphFilter={this.props.graphFilter}
+          />
       </div>
     );
   }
@@ -33,21 +47,21 @@ class GraphDock extends Component {
 GraphDock.propTypes = {
   dock: PropTypes.object,
   graphFilter: PropTypes.object,
-  onFilterClick: PropTypes.func.isRequired
+  onFilterClick: PropTypes.func.isRequired,
+  routeName: PropTypes.string
 };
 
 const mapStateToProps = state => {
   return {
-    dock: state.dock,
-    graphFilter: state.graphFilter
+    dockActive: state.getIn(['route', 'name']) === 'influencers',
+    graphFilter: state.get('graphFilter')
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onFilterClick: () => {
-      alert('holy moly!!!!');
-      //dispatch(GraphFilterStateAction());
+      dispatch(graphFilterStateAction());
     }
   }
 }

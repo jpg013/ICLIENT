@@ -2,7 +2,7 @@ import React from 'react';
 import './gear.icon.css';
 
 const GearIcon = () => (
-  <svg className="gearIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
+  <svg className="gearIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32" enableBackground="new 0 0 32 32">
   <g>
   	<path d="M31.091,19.012V12.99l-4.081-0.264c-0.229-0.769-0.531-1.505-0.906-2.198l2.697-3.068L24.543,3.2
   		l-3.071,2.697c-0.691-0.376-1.431-0.679-2.199-0.908L19.009,0.91h-6.022l-0.262,4.079c-0.77,0.229-1.505,0.532-2.195,0.908
