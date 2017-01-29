@@ -1,0 +1,8 @@
+.flagIcon {
+  
+}
+
+.flagIcon > * {
+  fill: #B6BFBE;
+  opacity: 0.5;
+}
