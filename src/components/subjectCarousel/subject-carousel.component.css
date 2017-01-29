@@ -3,6 +3,7 @@
   width: 100%;
   z-index: 1000;
   display: flex;
+  overflow: hidden;
 }
 
 .subjectCarouselCard-stage {
@@ -20,7 +21,8 @@
   width: 50%;
   position: relative;
   display: flex;
+  transition: left 0.65s ease-out;
   top: 0;
-  left: 50%;
+  left: 110%; /* default, ensure off the screen when 'sliding' in */
   align-items: center;
 }

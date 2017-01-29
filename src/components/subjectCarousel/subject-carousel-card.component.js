@@ -23,10 +23,10 @@ class SubjectCarouselCard extends Component {
           <div className="subjectCarouselCard-metaInfo_secondary">1995</div>
         </div>
         <div className="subjectCarouselCard-social">
-          <TwitterIcon cssClass="svgIcon_medium" />
-          <FacebookIcon cssClass="svgIcon_medium" />
-          <LinkedinIcon cssClass="svgIcon_medium" />
-          <GooglePlusIcon cssClass="svgIcon_medium" />
+          <TwitterIcon cssClass="subjectCarouselCard-social_icon" />
+          <FacebookIcon cssClass="subjectCarouselCard-social_icon" />
+          <LinkedinIcon cssClass="subjectCarouselCard-social_icon" />
+          <GooglePlusIcon cssClass="subjectCarouselCard-social_icon" />
         </div>
       </div>
     )

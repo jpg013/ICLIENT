@@ -43,7 +43,8 @@
 }
 
 .subjectCarouselCard-profile {
-  background-color: #b5bebd;
+  background-color: #B6BFBE;
+  opacity: 0.5;
   width: 90%;
   height: 65px;
   position: relative;
@@ -51,11 +52,16 @@
 }
 
 .subjectCarouselCard-social {
-  width: 90%;
+  width: 75%;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.subjectCarouselCard-social_icon {
+  width: 24px;
+  height: 24px;
 }
 
 .subjectCarouselCard-metaInfo {
