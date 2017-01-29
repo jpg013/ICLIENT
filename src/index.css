@@ -89,3 +89,16 @@ body a {
 .regularCheckbox input[type=checkbox]:checked + label:after {
 	opacity: 1;
 }
+
+/*
+ * Svg icons
+ */
+.svgIcon_small {
+  width: 22px;
+  height: 22px;
+}
+
+.svgIcon_medium {
+  width: 28px;
+  height: 28px;
+}

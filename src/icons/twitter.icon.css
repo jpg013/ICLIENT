@@ -1,0 +1,8 @@
+.twitterIcon {
+
+}
+
+.twitterIcon > * {
+  fill: #B6BFBE;
+  opacity: 0.5;
+}
