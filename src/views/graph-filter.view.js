@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import PlusIcon from '../icons/plus.icon';
-import './graph-filter.component.css';
+import './graph-filter.view.css';
 import classNames from 'classnames';
 
 const GraphFilter = ({handleFilterClick, dockActive, graphFilter}) => {

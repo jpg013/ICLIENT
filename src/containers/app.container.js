@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <SideMenu route={this.props.route}/>
-        <GraphDock />
+        <SideMenu route={this.props.route} />
+        <GraphDock dispatch={this.props.dispatch} />
         {this.props.children}
       </div>
     );
@@ -20,7 +20,8 @@ class App extends Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  route: PropTypes.object
+  route: PropTypes.object,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {

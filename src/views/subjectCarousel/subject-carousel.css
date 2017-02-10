@@ -1,0 +1,10 @@
+.subjectCarousel-slider {
+  background: transparent;
+  height: 100%;
+  width: 50%;
+  position: relative;
+  display: flex;
+  top: 0;
+  left: 100%; /* default, ensure off the screen when 'sliding' in */
+  align-items: center;
+}

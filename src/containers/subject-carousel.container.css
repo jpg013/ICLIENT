@@ -1,0 +1,21 @@
+.subjectCarousel-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  overflow: hidden;
+}
+
+.subjectCarousel-containerStage {
+  top: 100%;
+  width: 180px;
+  background-color: #4f5959;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 90px);
+  transition: top 250ms ease-out; 
+}
+
+.subjectCarousel-containerStage_active {
+  top: calc(100% - 63px);
+}

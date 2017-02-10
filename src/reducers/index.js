@@ -2,6 +2,7 @@ import DockReducer from './dock.reducer';
 import GraphFilterReducer from './graph-filter.reducer';
 import InfluencersReducer from './influencers.reducer';
 import RouteReducer from './route.reducer';
+import SubjectCarouselReducer from './subject-carousel.reducer';
 
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -10,7 +11,8 @@ const reducers = Map({
   dock: DockReducer,
   graphFilter: GraphFilterReducer,
   influencers: InfluencersReducer,
-  route: RouteReducer
+  route: RouteReducer,
+  subjectCarousel: SubjectCarouselReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

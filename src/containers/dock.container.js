@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import GraphIcon from '../icons/graph.icon';
-import GraphFilter from '../components/graph-filter.component';
-import SubjectCarousel from '../components/subjectCarousel/subject-carousel.component';
+import GraphFilter from '../views/graph-filter.view';
+import SubjectCarouselContainer from './subject-carousel.container';
 import { graphFilterStateAction } from '../actions/graph-filter.actions';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -21,19 +21,13 @@ class GraphDock extends Component {
     );
   }
 
-  renderSubjectCarousel() {
-    return this.props.dockActive ? <SubjectCarousel /> : undefined
-  }
-
   render() {
     return (
       <div className={this.getDockClass()}>
         <div className={this.getGraphBtnClassNames()}>
           <GraphIcon />
         </div>
-
-        {this.renderSubjectCarousel()}
-
+        <SubjectCarouselContainer active={this.props.dockActive} />
         <GraphFilter
           handleFilterClick={() => this.props.onFilterClick()}
           dockActive={this.props.dockActive}
@@ -48,7 +42,8 @@ GraphDock.propTypes = {
   dock: PropTypes.object,
   graphFilter: PropTypes.object,
   onFilterClick: PropTypes.func.isRequired,
-  routeName: PropTypes.string
+  routeName: PropTypes.string,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
