@@ -14,7 +14,7 @@ const SubjectCarouselCard = ({name, graduatedDate, isFlagged, score}) => {
         <div className="subjectCarouselCard-score_inner">{score}</div>
       </div>
       <div className="subjectCarouselCard-flag">
-        <FlagIcon cssClass="subjectCarouselCard-flag_icon"/>
+        <FlagIcon cssClass="subjectCarouselCard-flag_icon" isActive={isFlagged}/>
       </div>
 
       <div className="subjectCarouselCard-profile"></div>

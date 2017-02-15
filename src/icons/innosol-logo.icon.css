@@ -1,9 +1,9 @@
-.headerLogoIcon {
+.innosolLogo-icon {
   width: 145px;
   height: 52px;
   padding: 10px;
 }
 
-.headerLogoIcon > * {
+.innosolLogo-icon > * {
   fill: #F0F0F0;
 }

@@ -1,8 +1,13 @@
 import React from 'react';
-import './header-logo.icon.css';
+import classNames from 'classnames';
+import './innosol-logo.icon.css';
 
-const HeaderLogoIcon = () => (
-  <svg className="headerLogoIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 52" enableBackground="new 0 0 145 52" >
+const InnosolLogoIcon = ({cssClass, cssDecorationClass}) => {
+  const getClassNames = () => classNames('innosolLogo-icon', cssClass);
+  const getDecorationClassNames = () => classNames(cssDecorationClass);
+
+  return (
+  <svg className={getClassNames()} version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 52" enableBackground="new 0 0 145 52" >
   <g>
   	<g>
   		<path d="M2.852,24.077c-0.604-0.603-0.905-1.319-0.905-2.154c0-0.833,0.302-1.551,0.905-2.154
@@ -25,7 +30,8 @@ const HeaderLogoIcon = () => (
   			S109.227,44.113,110.591,45.504z"/>
   		<path d="M135.552,51.557h-4.826c0,0-0.006-29.23,0-31.958c2.668-1.553,4.826,0,4.826,0V51.557z"/>
   	</g>
-  	<rect x="70.274" y="16.426" width="1.602" height="23.509"/>
+    <g className={getDecorationClassNames()}>
+    <rect x="70.274" y="16.426" width="1.602" height="23.509"/>
   	<g>
   		<path d="M71.075,17.729c-2.189,0-3.97-1.781-3.97-3.97s1.781-3.97,3.97-3.97s3.971,1.781,3.971,3.97
   			S73.264,17.729,71.075,17.729z M71.075,11.284c-1.364,0-2.475,1.11-2.475,2.475c0,1.365,1.11,2.475,2.475,2.475
@@ -107,6 +113,7 @@ const HeaderLogoIcon = () => (
   	<path d="M73.229,37.914c-0.604-0.604-1.321-0.904-2.154-0.904s-1.55,0.301-2.153,0.904
   		c-0.603,0.603-0.904,1.32-0.904,2.153c0,0.835,0.301,1.552,0.904,2.155s1.32,0.904,2.153,0.904s1.55-0.301,2.154-0.904
   		c0.602-0.604,0.905-1.32,0.905-2.155C74.134,39.234,73.83,38.517,73.229,37.914z"/>
+    </g>
   	<path d="M79.688,31.723c-1.708-1.699-3.745-2.746-6.089-3.178v4.479c1.002,0.34,1.897,0.886,2.666,1.672
   		c1.362,1.392,2.045,3.193,2.045,5.404s-0.683,4.014-2.045,5.404c-1.364,1.395-3.095,2.088-5.191,2.088s-3.826-0.693-5.189-2.088
   		c-1.365-1.391-2.046-3.193-2.046-5.404s0.681-4.013,2.046-5.404c0.769-0.786,1.663-1.332,2.664-1.672v-4.48
@@ -142,7 +149,7 @@ const HeaderLogoIcon = () => (
   		c-0.728-0.312-1.493-0.466-2.299-0.466c-0.803,0-1.563,0.154-2.275,0.466c-0.713,0.312-1.341,0.73-1.882,1.259
   		c-0.542,0.529-0.968,1.152-1.277,1.867c-0.311,0.714-0.465,1.477-0.465,2.285v7.546v5.038H34.967z"/>
   </g>
-  </svg>
-)
+  </svg>)
+}
 
-export default HeaderLogoIcon;
+export default InnosolLogoIcon;

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-import HeaderLogoIcon from '../icons/header-logo.icon';
+import InnosolLogoIcon from '../icons/innosol-logo.icon';
 import GearIcon from '../icons/gear.icon'
 import './header.common.css';
 
 const header = () => (
   <div className="header">
     <Link to="/" className="header-logoContainer">
-      <HeaderLogoIcon />
+      <InnosolLogoIcon />
     </Link>
     <div className="header-welcome">Welcome to the UCM Dashboard, Jenne</div>
     <div className="header-gear">

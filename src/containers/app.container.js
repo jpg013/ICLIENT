@@ -6,13 +6,19 @@ import { connect } from 'react-redux';
 import './app.container.css';
 
 class App extends Component {
+  mapChildrenWithProps() {
+    return this.props.chidren.map(child => {
+      return React.cloneElement(child, {
+        route: this.props.route,
+        dispatch: this.props.dispatch
+      })
+    })
+  }
+
   render() {
     return (
       <div className="app">
-        <Header />
-        <SideMenu route={this.props.route} />
-        <GraphDock dispatch={this.props.dispatch} />
-        {this.props.children}
+        {this.mapChildrenWithProps()}
       </div>
     );
   }

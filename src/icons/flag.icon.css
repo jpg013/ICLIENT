@@ -1,8 +1,21 @@
 .flagIcon {
-  
+
 }
 
-.flagIcon > * {
+.flagIcon-inner {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #EBDF75;
+}
+
+.flagIcon-outline {
   fill: #B6BFBE;
-  opacity: 0.5;
+}
+
+.flagIcon_active .flagIcon-inner {
+  fill: #eade74;
+}
+
+.flagIcon_active .flagIcon-outline {
+  fill: #eade74;
 }
