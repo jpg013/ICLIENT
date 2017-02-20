@@ -6,7 +6,7 @@ import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
 import Home from './views/home.view';
-import Login from './views/login'
+import Login from './views/login/login'
 import './index.css';
 
 const store = configureStore();

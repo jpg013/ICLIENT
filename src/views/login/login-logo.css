@@ -1,0 +1,48 @@
+/**
+  * Login Logo
+  */
+
+.login-logo {
+  width: 360px;
+  position: absolute;
+  left: calc(50% - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  top: 10%;
+  overflow: visible;
+  flex-wrap: wrap;
+  color: #F77D0F;
+}
+
+.login-logoTop {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logoBottom {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logo_icon {
+  width: 100%;
+  height: 100%;
+}
+
+.login-logo_decoration {
+  fill: currentColor;
+}
+
+.login-logoLabel {
+  font-size: 1em;
+  letter-spacing: 1em;
+  font-weight: 100;
+}

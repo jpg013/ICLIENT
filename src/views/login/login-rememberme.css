@@ -1,0 +1,23 @@
+.login-rememberMe {
+  background: transparent;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 3px;
+  color: #E0E0E0;
+}
+
+.login-rememberMeCheckbox {
+  display: flex;
+  width: 100%;
+  height: 20px;
+  align-items: center;
+}
+
+.login-rememberMeCheckbox_label {
+  padding-left: 1em;
+  color: currentColor;
+  font-size: 1em;
+}

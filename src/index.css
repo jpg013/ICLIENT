@@ -95,17 +95,15 @@ body a {
 }
 
 /**
- * Create the hover event of the tick
- */
-.regularCheckbox label:hover::after {
-	opacity: 0.5;
-}
-
-/**
  * Create the checkbox state for the tick
  */
 .regularCheckbox input[type=checkbox]:checked + label:after {
 	opacity: 1;
+}
+
+.regularCheckbox input:focus {
+  outline: none;
+  border: none;
 }
 
 /*
