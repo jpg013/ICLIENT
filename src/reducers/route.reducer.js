@@ -1,5 +1,5 @@
 import InitialState from './initial-state';
-import * as types from '../constants/action-types';
+import * as types from '../actions/types';
 
 const defaultState = InitialState.get('route');
 

@@ -13,6 +13,11 @@ export default Map({
     cardWidth: undefined,
     subjects: List(),
     carouselWidth: undefined,
-    isFetching: false 
+    isFetching: false
+  }),
+  auth: Map({
+    user: undefined,
+    isFetching: false,
+    error: undefined
   })
 });

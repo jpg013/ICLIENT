@@ -1,0 +1,107 @@
+.login-submit {
+  background: transparent;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-submitBtn {
+  background-color: #E0E0E0;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  overflow: hidden;
+  position: relative;
+  transition: width 250ms 230ms, font-size 0.1s 230ms, border-radius 100ms 380ms;
+}
+
+.login-submitBtn_submitting {
+  font-size: 0;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.login-submitBtn_success {
+
+}
+
+.login-submitBtn_submitting:after {
+  opacity: 1;
+  animation: rotate 1s 0.4s infinite linear;
+}
+
+.login-submitBtn_submitting .login-submitBtn_text {
+  font-size: 0;
+}
+
+.login-submitBtn_submitting:hover {
+  cursor: default !import;
+  pointer-events: none;
+}
+
+.login-submitBtn:hover {
+  cursor: pointer;
+}
+
+.login-submitBtn:focus {
+  outline: none;
+}
+
+.login-submitBtn_text {
+  color: #F77D0F;
+  font-size: 1.3em;
+  font-weight: 900;
+  transition: font-size 0.1s 150ms;
+}
+
+/*
+ * Ripple Effect
+ */
+.ripple {
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  background: rgba(0,0,0,0.4);
+  transform: scale(0);
+  border-radius: 50%;
+}
+
+.ripple_animate {
+  animation: animRipple 230ms;
+}
+
+@keyframes animRipple {
+  to {
+   transform: scale(3.5);
+   opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 330ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

@@ -39,7 +39,6 @@ function requestAnimation(toVal, fromVal, duration, animationId, animationHandle
     iterationCount += 1;
   }
   _animateFrame();
-
 }
 
 export {

@@ -1,6 +1,6 @@
 import InitialState from './initial-state';
 import { List } from 'immutable';
-import { REQUEST_SUBJECTS, RECEIVE_SUBJECTS, SETUP_CAROUSEL, RESET_CAROUSEL, SLIDE_CAROUSEL} from '../constants/action-types';
+import { REQUEST_SUBJECTS, RECEIVE_SUBJECTS, SETUP_CAROUSEL, RESET_CAROUSEL, SLIDE_CAROUSEL} from '../actions/types';
 
 const defaultState = InitialState.get('subjectCarousel');
 

@@ -1,3 +1,3 @@
-import * as types from '../constants/action-types';
+import * as types from './types';
 
 export const influencersType = val => ({ type: types.INFLUENCERS_TYPE, payload: val});

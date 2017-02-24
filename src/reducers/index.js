@@ -3,6 +3,7 @@ import GraphFilterReducer from './graph-filter.reducer';
 import InfluencersReducer from './influencers.reducer';
 import RouteReducer from './route.reducer';
 import SubjectCarouselReducer from './subject-carousel.reducer';
+import AuthReducer from './auth.reducer'
 
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -12,7 +13,8 @@ const reducers = Map({
   graphFilter: GraphFilterReducer,
   influencers: InfluencersReducer,
   route: RouteReducer,
-  subjectCarousel: SubjectCarouselReducer
+  subjectCarousel: SubjectCarouselReducer,
+  auth: AuthReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

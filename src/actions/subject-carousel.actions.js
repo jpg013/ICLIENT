@@ -1,4 +1,4 @@
-import { REQUEST_SUBJECTS, RECEIVE_SUBJECTS } from '../constants/action-types';
+import { REQUEST_SUBJECTS, RECEIVE_SUBJECTS } from './types';
 import fetch from 'isomorphic-fetch'
 
 export const fetchSubjects = () => {
