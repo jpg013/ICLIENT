@@ -17,13 +17,17 @@
   border: 1px solid transparent;
   overflow: hidden;
   position: relative;
-  transition: width 250ms 230ms, font-size 0.1s 230ms, border-radius 100ms 380ms;
+  transition: opacity 150ms;
 }
 
 .login-submitBtn_submitting {
-  font-size: 0;
-  width: 50px;
-  border-radius: 50%;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.login-submitBtn_submitting:hover {
+  cursor: default;
 }
 
 .login-submitBtn_success {
@@ -33,10 +37,6 @@
 .login-submitBtn_submitting:after {
   opacity: 1;
   animation: rotate 1s 0.4s infinite linear;
-}
-
-.login-submitBtn_submitting .login-submitBtn_text {
-  font-size: 0;
 }
 
 .login-submitBtn_submitting:hover {
@@ -66,7 +66,7 @@
   position: absolute;
   width: 15rem;
   height: 15rem;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
   transform: scale(0);
   border-radius: 50%;
 }
@@ -78,7 +78,7 @@
 @keyframes animRipple {
   to {
    transform: scale(3.5);
-   opacity: 0;
+   opacity: 0.2;
   }
 }
 

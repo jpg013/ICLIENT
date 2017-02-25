@@ -7,30 +7,36 @@ import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
 import Home from './views/home.view';
 import Login from './views/login/login'
+import Logout from './views/logout/index'
 import './index.css';
 
 const store = configureStore();
+const authUser = localStorage.getItem('auth_user');
 
-const onEnterMainLayout = () => {
-  alert('enter main component');
+if (authUser) {
+  store.dispatch({type: 'HYRDATE_USER', user: JSON.parse(authUser)});
 }
 
-const onEnterEmptyLayout = () => {
-  alert('enter empty component');
-}
+const userExists = () => !!store.getState().getIn(['auth', 'user']);
 
-const onEnterBrowserHistory = () => {
-  alert('on enter browser history');
+const requireAuth = (nextState, replace) => {
+  if (!userExists()) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
 }
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route component={MainLayout}>
+      <Route component={MainLayout} onEnter={requireAuth}>
         <Route path="/" component={Home} />
       </Route>
       <Route component={EmptyLayout}>
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
       </Route>
     </Router>
   </Provider>,

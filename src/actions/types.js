@@ -11,5 +11,6 @@ export const SETUP_CAROUSEL = "SETUP_CAROUSEL";
 
 /* Login */
 export const REQUEST_LOGIN = "REQUEST_LOGIN";
+export const REQUEST_LOGOUT = "REQUEST_LOGOUT";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";

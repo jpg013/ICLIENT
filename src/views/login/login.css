@@ -13,12 +13,12 @@
  }
 
  @keyframes shake{
- 	0% { left: calc(50% - 180px); }
- 	20% { left:calc(50% - 170px); }
- 	40% { left:calc(50% - 190px);; }
- 	60% { left:calc(50% - 170px);; }
- 	80% { left:calc(50% - 190px);; }
- 	100% { left:calc(50% - 180px);; }
+ 	0% { left: -10px; }
+ 	20% { left: 10px; }
+ 	40% { left: -10px; }
+ 	60% { left: 10px; }
+ 	80% { left: -10px; }
+ 	100% { left: 0px; }
  }
 
  .login-form {
@@ -34,6 +34,7 @@
    height: 124px;
    width: 360px;
    overflow: hidden;
+   position: relative;
  }
 
 .loginForm-appear {

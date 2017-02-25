@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import LoginLogo from './login-logo';
 import classNames from 'classnames';
@@ -22,9 +23,19 @@ class Login extends Component {
   }
 
   getLoginFormClassName() {
-    const x = classNames('login-form', {'login-form_error': this.props.status==='error'});
-    console.log(x);
-    return classNames('login-form', {'login-form_error': this.props.status==='error'});
+    return classNames('login-formControlsContainer', {'login-form_error': this.props.status === 'error'});
+  }
+
+  loginClick() {
+    if (this.props.status === 'submitting') { return; }
+    const {email, password, rememberMe} = this.state;
+    this.props.onSubmitClick({email, password, rememberMe})
+  }
+
+  componentDidUpdate() {
+    if (this.props.status === 'success') {
+      browserHistory.push('/');
+    }
   }
 
   render() {
@@ -32,8 +43,8 @@ class Login extends Component {
       <div className="login">
         <LoginLogo />
         <ReactCSSTransitionGroup transitionName="loginForm" transitionAppear={true} transitionAppearTimeout={500} transitionEnter={false} transitionLeave={false}>
-          <div className={this.getLoginFormClassName()}>
-            <div className="login-formControlsContainer">
+          <div className="login-form">
+            <div className={this.getLoginFormClassName()}>
               <LoginFormControl inputType="text" controlName="login-email-control" onChange={e => this.setState({email: e.target.value})}>
                 <LoginUsernameIcon />
               </LoginFormControl>
@@ -44,7 +55,7 @@ class Login extends Component {
 
             <LoginRememberMe onChange={e => this.setState({rememberMe: e.target.checked})}/>
 
-            <LoginSubmitButton status={this.props.status} onButtonClick={() => this.props.onSubmitClick()} />
+            <LoginSubmitButton status={this.props.status} onButtonClick={() => this.loginClick()} />
 
             <div className="login-forgotPassword">
               <span className="login-forgotPassword_link">Lost your password?</span>

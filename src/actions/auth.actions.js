@@ -1,14 +1,15 @@
-import { REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/dom/ajax';
 import 'rxjs/add/operator/map';
 
 const requestLogin = () => ({ type: REQUEST_LOGIN });
 const loginSuccess = user => ({type: LOGIN_SUCCESS, user});
-const loginError = message => ({type: LOGIN_FAILURE, message})
+const loginError = message => ({type: LOGIN_FAILURE, message});
+const requestLogout = () => ({ type: REQUEST_LOGOUT});
 
 const loginUser = creds => {
-  const config = Object.assign({}, { creds }, {
+  const config = Object.assign({}, { body: creds }, {
     method: "POST",
     url: "/login"
   });
@@ -18,8 +19,25 @@ const loginUser = creds => {
     const subscribe = Observable
       .ajax(config)
       .map(resp => resp.response)
-      .subscribe(resp => resp.success ? console.log('succes') : dispatch(loginError(resp.message)));
+      .subscribe(resp => {
+        if (resp.success) {
+          localStorage.setItem('auth_token', resp.token);
+          localStorage.setItem('auth_user', JSON.stringify(resp.user));
+          dispatch(loginSuccess(resp.user));
+        } else {
+          dispatch(loginError(resp.message));
+        }
+      })
   }
 }
 
-export {loginUser};
+const logoutUser = () => {
+  // Logs the user out
+  return dispatch => {
+    dispatch(requestLogout());
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('auth_user');
+  }
+}
+
+export {loginUser, logoutUser};
