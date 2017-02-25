@@ -20,6 +20,13 @@ class Login extends Component {
       password: '',
       rememberMe: false
     };
+
+    const onKeydown = e => {
+      console.log('asdfjlasdfjlk');
+      if (e.keyCode !== 13) return;
+      this.loginClick();
+    }
+    this.keyPressEventHandler = onKeydown.bind(this);
   }
 
   getLoginFormClassName() {
@@ -30,6 +37,14 @@ class Login extends Component {
     if (this.props.status === 'submitting') { return; }
     const {email, password, rememberMe} = this.state;
     this.props.onSubmitClick({email, password, rememberMe})
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keyPressEventHandler);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keyPressEventHandler);
   }
 
   componentDidUpdate() {
