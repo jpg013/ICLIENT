@@ -28,6 +28,15 @@ const requireAuth = (nextState, replace) => {
   }
 }
 
+const unauthorizedOnly = (nextState, replace) => {
+  if (userExists()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -35,7 +44,7 @@ render(
         <Route path="/" component={Home} />
       </Route>
       <Route component={EmptyLayout}>
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={Login} onEnter={unauthorizedOnly} />
         <Route path="/logout" component={Logout} />
       </Route>
     </Router>
