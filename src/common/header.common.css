@@ -1,5 +1,6 @@
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
   .header {
+    z-index: 1000;
     height: 48px;
     width: 100%;
     background-color: #f0f0f0;

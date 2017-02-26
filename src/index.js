@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
-import Home from './views/home.view';
+import Reports from './containers/reports.container';
 import Login from './views/login/login'
 import Logout from './views/logout/index'
 import './index.css';
@@ -41,7 +41,7 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route component={MainLayout} onEnter={requireAuth}>
-        <Route path="/" component={Home} />
+        <Route path="/" component={Reports} />
       </Route>
       <Route component={EmptyLayout}>
         <Route path="/login" component={Login} onEnter={unauthorizedOnly} />

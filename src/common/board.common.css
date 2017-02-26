@@ -1,0 +1,10 @@
+.board {
+  background: transparent;
+  position: absolute;
+  left: 112px;
+  top: 48px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 0;
+  overflow: hidden;
+}

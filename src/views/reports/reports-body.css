@@ -1,0 +1,10 @@
+.reportsBody {
+  width: 100%;
+  overflow: auto;
+  max-height: calc(100% - 8rem); 
+  background: transparent;
+}
+
+.reportsBody-scrollable {
+  width: 100%;
+}
