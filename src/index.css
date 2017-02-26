@@ -42,6 +42,21 @@ body a {
   }
 }
 
+.actionLink {
+  color: #6d9cbe;
+  transition: color 0.10s;
+}
+
+.actionLink:hover {
+  color: #79bbe0;
+  cursor: pointer;
+}
+
+.actionLink_active {
+  color: #79bbe0;
+  pointer-events: none;
+}
+
 .actionItem {
   background-color: #6d9cbe;
   cursor: pointer;

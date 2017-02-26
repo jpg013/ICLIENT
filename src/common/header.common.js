@@ -12,7 +12,7 @@ class Header extends Component {
         <Link to="/" className="header-logoContainer">
           <InnosolLogoIcon />
         </Link>
-        <div className="header-welcome">Welcome to the UCM Dashboard, {this.props.user.firstName}</div>
+        <div className="header-welcome">Welcome to the UCM Dashboard, {this.props.user.firstName}!</div>
         <div className="header-gear">
           <GearIcon />
         </div>

@@ -5,6 +5,7 @@
     width: 100%;
     background-color: #f0f0f0;
     display: flex;
+    font-size: 1.6rem;
     justify-content: flex-end;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   }
@@ -28,7 +29,6 @@
   }
 
   .header-welcome {
-    padding: 0;
     display: flex;
     height: 100%;
     align-items: center;
