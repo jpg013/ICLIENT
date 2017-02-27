@@ -7,6 +7,7 @@ const reportsBody = () => {
     <div className="reportsBody">
       <div className="reportsBody-scrollable">
         <ReportSet />
+        <ReportSet />
       </div>
     </div>
   )
