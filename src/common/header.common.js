@@ -9,9 +9,9 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <Link to="/" className="header-logoContainer">
+        <div className="header-logoContainer">
           <InnosolLogoIcon />
-        </Link>
+        </div>
         <div className="header-welcome">Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</div>
         <div className="header-gear">
           <GearIcon />
@@ -25,8 +25,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
+  const user = state.getIn(['auth', 'user']);
   return {
-    user: state.getIn(['auth', 'user'])
+    user,
+    userIsAdmin: user.get('role') === 'sys-admin'
   };
 }
 

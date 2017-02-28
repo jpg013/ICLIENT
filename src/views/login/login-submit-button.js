@@ -1,13 +1,9 @@
 import React, { PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import LoadingSpinner from '../loadingSpinner/loading-spinner';
 import classNames from 'classnames';
 import './login-submit-button.css';
 
 const LoginSubmitButton = ({onButtonClick, status}) => {
-  let rippleEl;
   const getBtnClassName = () => classNames('login-submitBtn', {'login-submitBtn_submitting': status === 'submitting'});
-  const onRippleRef = (el) => el ? rippleEl = el : undefined;
 
   return (
     <div className="login-submit">
@@ -20,7 +16,7 @@ const LoginSubmitButton = ({onButtonClick, status}) => {
 
 LoginSubmitButton.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  status: PropTypes.func.isRequired
+  status: PropTypes.string.isRequired
 }
 
 export default LoginSubmitButton;

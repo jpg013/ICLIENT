@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/auth.actions';

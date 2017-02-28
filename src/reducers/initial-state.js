@@ -19,5 +19,6 @@ export default Map({
     user: undefined,
     isFetching: false,
     error: undefined
-  })
+  }),
+  reportSets: List()
 });

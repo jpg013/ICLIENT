@@ -1,4 +1,4 @@
-import React, { PropTypes} from 'react';
+import React from 'react';
 import './login-password.icon.css';
 
 const LoginPasswordIcon = () => (

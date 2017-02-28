@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+import { Router, browserHistory, Route } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';

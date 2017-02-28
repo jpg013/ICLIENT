@@ -20,6 +20,7 @@ const loginUser = creds => {
       .ajax(config)
       .map(resp => resp.response)
       .subscribe(resp => {
+        subscribe.unsubscribe();
         if (resp.success) {
           localStorage.setItem('auth_token', resp.token);
           localStorage.setItem('auth_user', JSON.stringify(resp.user));

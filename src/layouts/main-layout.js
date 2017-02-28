@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Header from '../common/header.common';
 import SideMenu from '../common/side-menu.common';
 import Board from '../common/board.common';

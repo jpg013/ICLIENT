@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import './report-card.css';
 
-const reportCard = ({report}) => {
+const reportCard = ({report, downloadHandler}) => {
   return (
     <div className="reportCard">
       <div className="reportCard-header">{report.get('name')}</div>
@@ -18,7 +18,9 @@ const reportCard = ({report}) => {
 }
 
 reportCard.propTypes = {
-  report: PropTypes.object.isRequired
+  report: PropTypes.object.isRequired,
+  downloadHandler: PropTypes.func.isRequired,
+  isDownloading: PropTypes.bool
 }
 
 export default reportCard;

@@ -4,6 +4,7 @@ import InfluencersReducer from './influencers.reducer';
 import RouteReducer from './route.reducer';
 import SubjectCarouselReducer from './subject-carousel.reducer';
 import AuthReducer from './auth.reducer'
+import ReportReducer from './report.reducer';
 
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -14,7 +15,8 @@ const reducers = Map({
   influencers: InfluencersReducer,
   route: RouteReducer,
   subjectCarousel: SubjectCarouselReducer,
-  auth: AuthReducer
+  auth: AuthReducer,
+  reportSets: ReportReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

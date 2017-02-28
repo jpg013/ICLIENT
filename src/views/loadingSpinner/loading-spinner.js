@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import './loading-spinner.css';
-import classNames from 'classnames';
 
 const LoadingSpinner = () => {
   return (

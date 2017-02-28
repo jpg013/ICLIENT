@@ -18,12 +18,14 @@ class Reports extends Component {
 }
 
 Reports.propTypes = {
-  reportSets: PropTypes.object.isRequired
+  reportSets: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    reportSets: state.getIn(['auth', 'user', 'team', 'reportSets'])
+    reportSets: state.get('reportSets'),
+    user: state.getIn(['auth', 'user'])
   };
 }
 

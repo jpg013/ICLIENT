@@ -27,11 +27,12 @@
   font-size: 1.2rem;
   color: #2f4666;
   padding: 0 1rem;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .reportCard-bodyDescription_font {
   margin: 0.5rem 0;
+  font-size: 1.2rem;
 }
 
 .reportCard-bodyDownload {
