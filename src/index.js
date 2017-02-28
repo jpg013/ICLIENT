@@ -1,5 +1,6 @@
 import 'rxjs/add/observable/dom/ajax';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/publishReplay';
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory, Route } from 'react-router';

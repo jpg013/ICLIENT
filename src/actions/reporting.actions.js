@@ -20,20 +20,19 @@ const receiveReportDownload = (report, reportSet) => {
 const downloadReport = (report, reportSet) => {
   return dispatch => {
     dispatch(requestReportDownload(report, reportSet));
-    setTimeout(function() {
-      dispatch(receiveReportDownload(report, reportSet));
-    }, 2500);
     const config = Object.assign({}, {
       method: "POST",
-      url: "report",
-      body: { report }
+      url: "report/download",
+      body: {
+        reportId: report.get('_id'),
+        reportSetId: reportSet.get('_id')
+      }
     });
-    /*
-    const subscribe = callAPi(config).subscribe(resp => {
-      debugger;
-      console.log(resp)
+    const subscribe = callApi(config).subscribe(resp => {
+      subscribe.unsubscribe();
+      console.log(resp);
+      dispatch(receiveReportDownload(report, reportSet));
     })
-    */
   }
 }
 
