@@ -1,4 +1,4 @@
-import { Map, List } from 'immutable';
+import { Map, List, OrderedMap } from 'immutable';
 
 export default Map({
   dock: Map({ }),
@@ -20,5 +20,7 @@ export default Map({
     isFetching: false,
     error: undefined
   }),
-  reportSets: List()
+  reporting: Map({
+    reportSets: OrderedMap()
+  })
 });

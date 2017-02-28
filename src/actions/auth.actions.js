@@ -1,7 +1,5 @@
 import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/dom/ajax';
-import 'rxjs/add/operator/map';
 
 const requestLogin = () => ({ type: REQUEST_LOGIN });
 const loginSuccess = user => ({type: LOGIN_SUCCESS, user});

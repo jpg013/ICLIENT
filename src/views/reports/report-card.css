@@ -45,4 +45,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: font-size 100ms;
+  position: relative;
+}
+
+.reportCard-bodyDownloadSpinner {
+  position: absolute;
+  left: calc(50% - 1.5rem);
+  top: calc(50% - 1.5rem);
+}
+
+.reportCard-bodyDownloadSpinner svg {
+  width: 3rem;
+}
+
+.reportCard-bodyDownload_downloading {
+  font-size: 0rem;
 }

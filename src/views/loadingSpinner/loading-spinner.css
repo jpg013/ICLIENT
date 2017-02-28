@@ -1,8 +1,5 @@
 .checkmark {
   width: 44px;
-  position: absolute;
-  top: calc(50% - 22px);
-  left: calc(50% - 22px);
 }
 
 .path {
@@ -10,7 +7,7 @@
   stroke-dashoffset: 0;
   animation-iteration-count: infinite;
   animation-name: load, spin;
-  animation-duration: 2s, 2s;
+  animation-duration: 1.5s, 1.5s;
   animation-timing-function: linear;
   transform-origin: 50% 50%;
   fill: none;

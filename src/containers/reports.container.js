@@ -1,16 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ReportsHeader from '../views/reports/reports-header';
-import ReportsBody from '../views/reports/reports-body';
+import { downloadReport } from '../actions/reporting.actions';
+import ReportSet from '../views/reports/report-set';
 import './reports.container.css';
 
 class Reports extends Component {
   render() {
+    const reportSets = this.props.reportSets.toArray();
+    const buildReportSet = reportSet => <ReportSet key={reportSet.get('name')} reportSet={reportSet} downloadReport={(report, reportSet) => this.props.downloadReport(report, reportSet)} />
+    const renderReportSets = () => reportSets.map(cur => buildReportSet(cur) );
+
     return (
-      <div className="reports-container">
-        <div className="reports-list">
-          <ReportsHeader />
-          <ReportsBody reportSets={this.props.reportSets} />
+      <div className="reports">
+        <div className="reportsList">
+          <div className="reportsHeader">
+            <span className="reportsHeader-title">Reporting</span>
+          </div>
+
+          <div className="reportsBody">
+            <div className="reportsBody-scrollable">
+              {renderReportSets()}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -24,10 +35,16 @@ Reports.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    reportSets: state.get('reportSets'),
+    reportSets: state.getIn(['reporting', 'reportSets']),
     user: state.getIn(['auth', 'user'])
   };
 }
 
-const ConnectedReports = connect(mapStateToProps)(Reports);
+const mapDispatchToProps = dispatch => {
+  return {
+    downloadReport: (report, reportSet) => dispatch(downloadReport(report, reportSet))
+  }
+}
+
+const ConnectedReports = connect(mapStateToProps, mapDispatchToProps)(Reports);
 export default ConnectedReports;
