@@ -69,20 +69,21 @@
     display: flex;
     width: 188px;
     background-color: #98AFC7;
+    font-size: 1.6rem;
     height: 100%;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    transition: background-color .15s;
   }
 
   .header-welcome {
-    padding: 0 10px;
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: flex-start;
     background: transparent;
+    font-size: 1.6rem;
+    max-width: 50rem;
   }
 
   .header-gear {
@@ -90,6 +91,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 50px
+    width: 5rem;
   }
 }

@@ -10,6 +10,7 @@ import './side-menu.common.css';
 const SideMenu = ({route}) => {
   return (
   <div className="sideMenu">
+    <div className="sideMenu-spacer"></div>
     <Link to="/" className="sideMenu-btn actionItem actionItem_active">
       <GraphIcon />
     </Link>

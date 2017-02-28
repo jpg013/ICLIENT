@@ -4,7 +4,7 @@ import './board.common.css';
 class Board extends Component {
   render() {
     return (
-      <div className="board">
+      <div className="boardView">
         {this.props.children}
       </div>
     )
