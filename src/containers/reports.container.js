@@ -10,7 +10,7 @@ class Reports extends Component {
       <div className="reports-container">
         <div className="reports-list">
           <ReportsHeader />
-          <ReportsBody />
+          <ReportsBody reportSets={this.props.reportSets} />
         </div>
       </div>
     );
@@ -18,12 +18,12 @@ class Reports extends Component {
 }
 
 Reports.propTypes = {
-
-}
+  reportSets: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => {
   return {
-
+    reportSets: state.getIn(['auth', 'user', 'team', 'reportSets'])
   };
 }
 

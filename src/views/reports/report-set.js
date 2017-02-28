@@ -36,25 +36,18 @@ class ReportSet extends Component {
   }
 
   render() {
+    const renderReportCards = () => {
+      return this.props.reportSet.get('reports').map(cur => <ReportCard key={cur.get('_id')} report={cur} />).toJS();
+    }
+
     return (
       <div className='reportSet' style={this.getReportSetInlineStyle()} ref={ref => this.reportSetRef(ref)}>
         <div className="reportSet-header">
           <div className={this.getArrowClassName()} onClick={() => this.toggleReportSet()}></div>
-          <div className="reportSet-header_text">{this.props.reportName || 'Name of report category'}</div>
+          <div className="reportSet-header_text">{this.props.reportSet.get('name')}</div>
         </div>
         <div className="reportSet-body">
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
-          <ReportCard />
+          {renderReportCards()}
         </div>
       </div>
     );
@@ -62,7 +55,7 @@ class ReportSet extends Component {
 }
 
 ReportSet.propTypes = {
-  reportName: PropTypes.string
+  reportSet: PropTypes.object.isRequired
 }
 
 export default ReportSet;

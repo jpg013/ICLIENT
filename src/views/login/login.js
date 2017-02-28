@@ -22,7 +22,6 @@ class Login extends Component {
     };
 
     const onKeydown = e => {
-      console.log('asdfjlasdfjlk');
       if (e.keyCode !== 13) return;
       this.loginClick();
     }
