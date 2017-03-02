@@ -1,5 +1,5 @@
 import InitialState from './initial-state';
-import { LOGIN_SUCCESS, HYDRATE_USER, REQUEST_DOWNLOAD_REPORT, RECEIVE_DOWNLOAD_REPORT } from '../actions/types';
+import { IO_SYNC_USER, LOGIN_SUCCESS, REQUEST_DOWNLOAD_REPORT, RECEIVE_DOWNLOAD_REPORT } from '../actions/types';
 import { OrderedMap, Map } from 'immutable';
 
 const defaultState = InitialState.get('reporting');
@@ -29,9 +29,10 @@ export default function (state = defaultState, action) {
       return state.updateIn(['reportSets', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', false));
     case REQUEST_DOWNLOAD_REPORT:
       return state.updateIn(['reportSets', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', true));
-    case HYDRATE_USER:
     case LOGIN_SUCCESS:
       return state.set('reportSets', buildReportSets(action.user.team.reportSets));
+    case IO_SYNC_USER:
+      return action.user ? state.set('reportSets', buildReportSets(action.user.team.reportSets)) : defaultState;
     default:
       return state;
   }

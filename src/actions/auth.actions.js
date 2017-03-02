@@ -1,5 +1,6 @@
 import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
 import { Observable } from 'rxjs/Observable';
+import { setAuthToken, removeAuthToken } from '../services/storage.service';
 
 const requestLogin = () => ({ type: REQUEST_LOGIN });
 const loginSuccess = user => ({type: LOGIN_SUCCESS, user});
@@ -20,8 +21,7 @@ const loginUser = creds => {
       .subscribe(resp => {
         subscribe.unsubscribe();
         if (resp.success) {
-          localStorage.setItem('auth_token', resp.token);
-          localStorage.setItem('auth_user', JSON.stringify(resp.user));
+          setAuthToken(resp.token);
           dispatch(loginSuccess(resp.user));
         } else {
           dispatch(loginError(resp.message));
@@ -34,8 +34,7 @@ const logoutUser = () => {
   // Logs the user out
   return dispatch => {
     dispatch(requestLogout());
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('auth_user');
+    removeAuthToken();
   }
 }
 

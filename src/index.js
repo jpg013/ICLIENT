@@ -4,42 +4,29 @@ import 'rxjs/add/operator/publishReplay';
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory, Route } from 'react-router';
+import { hydrateApp } from './actions/app';
 import { Provider } from 'react-redux';
-import { HYDRATE_USER } from './actions/types';
 import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
 import Reports from './containers/reports.container';
 import Login from './views/login/login'
 import Logout from './views/logout/index'
+import { connectSocket } from './middleware/socket';
+import { getAuthToken } from './services/storage.service';
 import './index.css';
 
+/**
+ * Create redux store
+ */
 const store = configureStore();
-const authUser = localStorage.getItem('auth_user');
 
-if (authUser) {
-  store.dispatch({type: HYDRATE_USER, user: JSON.parse(authUser)});
-}
+/**
+ * hydrate the app
+ */
+store.dispatch(hydrateApp({authToken: getAuthToken()}));
 
-const userExists = () => !!store.getState().getIn(['auth', 'user']);
-
-const requireAuth = (nextState, replace) => {
-  if (!userExists()) {
-    replace({
-      pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  }
-}
-
-const unauthorizedOnly = (nextState, replace) => {
-  if (userExists()) {
-    replace({
-      pathname: '/',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  }
-}
+connectSocket(store.dispatch);
 
 render(
   <Provider store={store}>
@@ -55,3 +42,26 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+
+function isAuthenticated() {
+  return store.getState().getIn(['auth', 'isAuthenticated']);
+}
+
+function requireAuth (nextState, replace) {
+  if (!isAuthenticated()) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
+}
+
+function unauthorizedOnly(nextState, replace) {
+  if (isAuthenticated()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
+}

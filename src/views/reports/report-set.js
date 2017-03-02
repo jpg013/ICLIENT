@@ -21,7 +21,7 @@ class ReportSet extends Component {
     if (!this.state.reportSetElement || this.state.closed) { return {} };
     const headerHeight = this.state.reportSetElement.children[0].getBoundingClientRect().height;
     const bodyHeight = this.state.reportSetElement.children[1].getBoundingClientRect().height;
-    const fullHeight = headerHeight + bodyHeight;
+    const fullHeight = headerHeight + bodyHeight + 20;
     return {height: `${fullHeight}px`};
   }
 

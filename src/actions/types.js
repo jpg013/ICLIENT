@@ -14,8 +14,14 @@ export const REQUEST_LOGIN = "REQUEST_LOGIN";
 export const REQUEST_LOGOUT = "REQUEST_LOGOUT";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
-export const HYDRATE_USER = "HYDRATE_USER";
 
 /* Reporting */
 export const REQUEST_DOWNLOAD_REPORT = "REQUEST_DOWNLOAD_REPORT";
 export const RECEIVE_DOWNLOAD_REPORT = "RECEIVE_DOWNLOAD_REPORT";
+
+/* Application */
+export const HYDRATE_APP = "HYDRATE_APP";
+
+/* Socket.io */
+export const IO_SYNC_USER = "IO_SYNC_USER";
+export const IO_REQUEST_USER = "IO_REQUEST_USER"

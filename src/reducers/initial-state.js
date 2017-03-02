@@ -18,7 +18,8 @@ export default Map({
   auth: Map({
     user: undefined,
     isFetching: false,
-    error: undefined
+    error: undefined,
+    isAuthenticated: false
   }),
   reporting: Map({
     reportSets: OrderedMap()

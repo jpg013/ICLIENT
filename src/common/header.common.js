@@ -7,12 +7,13 @@ import './header.common.css';
 
 class Header extends Component {
   render() {
+    const renderUserGreeting = () => <span>Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</span>
     return (
       <div className="header">
         <div className="header-logoContainer">
           <InnosolLogoIcon />
         </div>
-        <div className="header-welcome">Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</div>
+        <div className="header-welcome">{this.props.user && renderUserGreeting()}</div>
         <div className="header-gear">
           <GearIcon />
         </div>
@@ -28,12 +29,12 @@ const mapStateToProps = state => {
   const user = state.getIn(['auth', 'user']);
   return {
     user,
-    userIsAdmin: user.get('role') === 'sys-admin'
+    userIsAdmin: user && user.get('role') === 'sys-admin'
   };
 }
 
 Header.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object
 }
 
 const ConnectedHeader = connect(mapStateToProps)(Header);

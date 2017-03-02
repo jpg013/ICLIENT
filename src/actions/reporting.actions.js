@@ -30,7 +30,6 @@ const downloadReport = (report, reportSet) => {
     });
     const subscribe = callApi(config).subscribe(resp => {
       subscribe.unsubscribe();
-      console.log(resp);
       dispatch(receiveReportDownload(report, reportSet));
     })
   }

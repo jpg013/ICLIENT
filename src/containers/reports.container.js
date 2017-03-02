@@ -29,8 +29,8 @@ class Reports extends Component {
 }
 
 Reports.propTypes = {
-  reportSets: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  reportSets: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
