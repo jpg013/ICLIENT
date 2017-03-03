@@ -9,11 +9,12 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
+// import AdminLayout from './layourts/admin-layout';
 import Reports from './containers/reports.container';
 import Login from './views/login/login'
 import Logout from './views/logout/index'
 import { connectSocket } from './middleware/socket';
-import { getAuthToken } from './services/storage.service';
+import { getBootData } from './services/storage.service';
 import './index.css';
 
 /**
@@ -24,7 +25,7 @@ const store = configureStore();
 /**
  * hydrate the app
  */
-store.dispatch(hydrateApp({authToken: getAuthToken()}));
+store.dispatch(hydrateApp(getBootData()));
 
 connectSocket(store.dispatch);
 
@@ -43,9 +44,21 @@ render(
   document.getElementById('root')
 );
 
+function adminRestricted(nextState, replace) {
+  if (!isAdmin()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
+}
 
 function isAuthenticated() {
   return store.getState().getIn(['auth', 'isAuthenticated']);
+}
+
+function isAdmin() {
+  return isAuthenticated() && store.getState().getIn(['auth', 'user', 'role']) === 'sys-admin';
 }
 
 function requireAuth (nextState, replace) {

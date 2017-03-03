@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 import { browserHistory } from 'react-router';
+import { getAuthToken } from '../services/storage.service';
 
 const BASE_URL = "/api/";
 
 const callApi = config => {
   if (!config) { return; }
-  let token = localStorage.getItem('auth_token') || undefined;
-  const headers = { headers: { 'Authorization' : `Bearer ${token}` }};
+  const headers = { headers: { 'Authorization' : `Bearer ${getAuthToken()}` }};
   const callOptions = Object.assign({}, config, headers, {url: BASE_URL + config.url})
 
   const ajax$ = Observable

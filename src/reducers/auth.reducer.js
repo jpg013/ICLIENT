@@ -22,6 +22,9 @@ const buildUserMap = user => {
 export default function (state = defaultState, action) {
   switch (action.type) {
     case HYDRATE_APP:
+      if (action.data.user) {
+        state = state.set('user', buildUserMap(action.data.user));
+      }
       return state.set('isAuthenticated', !!action.data.authToken);
     case LOGIN_SUCCESS:
       return state.withMutations(val => {
