@@ -22,6 +22,5 @@ export const RECEIVE_DOWNLOAD_REPORT = "RECEIVE_DOWNLOAD_REPORT";
 /* Application */
 export const HYDRATE_APP = "HYDRATE_APP";
 
-/* Socket.io */
-export const IO_SYNC_USER = "IO_SYNC_USER";
-export const IO_REQUEST_USER = "IO_REQUEST_USER"
+/* Socket */
+export const SOCKET_SYNC_USER = "IO_SYNC_USER";

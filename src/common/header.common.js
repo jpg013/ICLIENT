@@ -7,16 +7,21 @@ import './header.common.css';
 
 class Header extends Component {
   render() {
-    const renderUserGreeting = () => <span>Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</span>
+    const renderUserGreeting = () => {
+      return this.props.userIsAdmin ?
+        <span>Welcome {this.props.user.getIn(['team', 'name'])}</span> :
+        <span>Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</span>
+    }
+
     return (
       <div className="header">
-        <div className="header-logoContainer">
+        <Link to="/" className="header-logoContainer">
           <InnosolLogoIcon />
-        </div>
+        </Link>
         <div className="header-welcome">{this.props.user && renderUserGreeting()}</div>
-        <div className="header-gear">
+        <Link to="/admin" className="header-gear">
           <GearIcon />
-        </div>
+        </Link>
         <Link to="/logout">
           <div className="header-logout actionItem">Sign Out</div>
         </Link>

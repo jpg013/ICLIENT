@@ -5,8 +5,9 @@ import { IO_SYNC_USER, REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REQUEST_LOGO
 const defaultState = InitialState.get('auth');
 
 const buildUserMap = user => {
-  const {createdDate, email, firstName, lastName, role, team} = user;
+  const {id, createdDate, email, firstName, lastName, role, team} = user;
   return Map({
+    id,
     createdDate,
     email,
     firstName,
