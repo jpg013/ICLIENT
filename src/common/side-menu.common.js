@@ -19,7 +19,7 @@ class SideMenu extends Component {
 }
 
 SideMenu.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.array
 }
 
 export default SideMenu;

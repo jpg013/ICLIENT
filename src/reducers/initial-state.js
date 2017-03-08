@@ -23,5 +23,14 @@ export default Map({
   }),
   reporting: Map({
     reportSets: OrderedMap()
+  }),
+  admin: Map({
+    teams: Map({
+      isLoading: false,
+      list: List()
+    })
+  }),
+  socketRooms: Map({
+    admin: Map()
   })
 });

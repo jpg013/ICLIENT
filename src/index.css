@@ -77,6 +77,17 @@ body a {
   pointer-events: none;
 }
 
+.actionIcon > svg {
+  cursor: pointer;
+  fill: #6d9cbe;
+  transition: fill 100ms;
+}
+
+.actionIcon:hover > svg {
+  cursor: pointer;
+  fill: #79bbe0;
+}
+
 .regularCheckbox {
 	position: relative;
 }

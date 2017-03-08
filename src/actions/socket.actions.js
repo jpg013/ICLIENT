@@ -1,5 +1,12 @@
-import { IO_SYNC_USER } from './types';
+import { SOCKET_SYNC_USER, SOCKET_ROOM_NOTIFICATION } from './types';
 
-const ioSyncUser = data => ({type: IO_SYNC_USER, user: data.user});
+const socketSyncUser = user => ({type: SOCKET_SYNC_USER, user});
+const socketRoomNotifcation = (room, data) => {
+  return {
+    type: SOCKET_ROOM_NOTIFICATION,
+    room,
+    update: data
+  }
+}
 
-export { ioSyncUser }
+export { socketSyncUser, socketRoomNotifcation }

@@ -1,33 +1,88 @@
 import sockjs from 'sockjs-client';
 import { getAuthToken } from '../services/storage.service';
-import { IO_REQUEST_USER, IO_SYNC_USER } from '../actions/types';
-import { ioSyncUser } from '../actions/socket.actions';
+import { socketSyncUser, socketRoomNotifcation } from '../actions/socket.actions';
+import { storage } from '../services/storage.service';
+import { List } from 'immutable';
 
-let io = new sockjs('http://localhost:3000/echo');
+function initSockJS(store) {
+  /**
+   * Interval variables
+   */
+  let io;
+  let status = 'disconnected';
+  let pending = List();
+  const socketURL = 'http://localhost:3000/_sock';
 
-const connectSocket = store => {
-  io.onopen = function() {
-    const user = store.getState().getIn(['auth', 'user']);
-    if (user) {
-      identifySocket(user.toJS());
-    }
-
+  const onSocketOpen = () => {
+    status = 'connected';
+    pending.forEach(cur => sendMessage(cur));
   }
 
-  io.onclose = function() {
+  const onSocketClose = () => {
     console.log('closing the socket');
   }
+
+  const onSocketMessage = e => {
+    const msg = JSON.parse(e.data);
+    switch(msg.event) {
+      case 'SOCKET_SYNC_USER':
+        return store.dispatch(socketSyncUser(msg.payload));
+      case 'SOCKET_ROOM_NOTIFICATION':
+        return store.dispatch(socketRoomNotifcation(msg.room, msg.data));
+      default:
+        return;
+    }
+  }
+
+  const addPendingMsg = msg => {
+    pending = pending.push(msg);
+  }
+
+  const sendMessage = msg => {
+    if (!io || status ==='disconnected') { return; }
+    if (status === 'connecting') {
+      return addPendingMsg(msg);
+    };
+    io.send(JSON.stringify(msg));
+  }
+
+  const connectSocket = () => {
+    if (status === 'connected' || status === 'connecting') { return; }
+    status = 'connecting';
+    io = new sockjs(socketURL);
+    io.onopen = onSocketOpen;
+    io.onclose = onSocketClose;
+    io.onmessage = onSocketMessage;
+  }
+
+  const identifySocket = () => {
+    const token = getAuthToken();
+    if (!token) { return; }
+    const msg = {
+      event: 'SOCKET_IDENTIFY_CONNECTION',
+      payload: token
+    };
+    sendMessage(msg);
+  }
+
+  const joinRoom = (roomName) => {
+    const msg = {
+      event: 'SOCKET_JOIN_ROOM',
+      payload: getAuthToken()
+    };
+    sendMessage(msg);
+  }
+
+  /**
+   * Expose API
+   */
+  return {
+    joinRoom,
+    identifySocket,
+    connectSocket
+  }
 }
 
-const identifySocket = (user) => {
-  console.log(user);
-  const payload = {
-    message: 'SOCKET_IDENTIFY_USER',
-    data: user.id
-  };
-  io.send(JSON.stringify(payload));
+export  {
+  initSockJS
 }
-
-export {
-  connectSocket
- }

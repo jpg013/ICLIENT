@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import './admin.container.css';
+import './admin-home.css';
 
-class Admin extends Component {
+class AdminHome extends Component {
   render() {
     return (
-      <div className="admin">
-      <h2> Hello world</h2>
+      <div className="adminHome">
+        <h2>Hello world</h2>
       </div>
     );
   }
 }
 
-Admin.propTypes = {
-  children: PropTypes.object.isRequired
+AdminHome.propTypes = {
+  children: PropTypes.array
 };
 
 const mapStateToProps = state => {
@@ -28,5 +28,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedAdmin = connect(mapStateToProps, mapDispatchToProps)(Admin);
-export default ConnectedAdmin;
+const ConnectedAdminHome = connect(mapStateToProps, mapDispatchToProps)(AdminHome);
+export default ConnectedAdminHome;

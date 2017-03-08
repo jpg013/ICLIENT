@@ -5,6 +5,8 @@ import RouteReducer from './route.reducer';
 import SubjectCarouselReducer from './subject-carousel.reducer';
 import AuthReducer from './auth.reducer'
 import ReportingReducer from './reporting.reducer';
+import AdminReducer from './admin.reducer';
+import SocketRoomsReducer from './socket-rooms.reducer';
 
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -16,7 +18,9 @@ const reducers = Map({
   route: RouteReducer,
   subjectCarousel: SubjectCarouselReducer,
   auth: AuthReducer,
-  reporting: ReportingReducer
+  reporting: ReportingReducer,
+  admin: AdminReducer,
+  socketRooms: SocketRoomsReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

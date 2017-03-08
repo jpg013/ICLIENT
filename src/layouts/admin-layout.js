@@ -12,7 +12,7 @@ class AdminLayout extends Component {
       <div className="adminLayout">
         <Header />
         <SideMenu>
-          <Link to="/admin" className="sideMenu-btn actionItem" activeClassName="actionItem_active">Stats</Link>
+          <Link to="/admin" className="sideMenu-btn actionItem" activeClassName="actionItem_active">Home</Link>
           <Link to="/admin/teams" className="sideMenu-btn actionItem" activeClassName="actionItem_active">Teams</Link>
           <Link to="/admin/users" className="sideMenu-btn actionItem" activeClassName="actionItem_active">Users</Link>
           <Link to="/admin/reports" className="sideMenu-btn actionItem" activeClassName="actionItem_active">Reports</Link>

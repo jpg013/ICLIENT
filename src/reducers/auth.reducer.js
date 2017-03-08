@@ -1,6 +1,6 @@
 import InitialState from './initial-state';
 import { Map } from 'immutable';
-import { IO_SYNC_USER, REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REQUEST_LOGOUT, HYDRATE_APP } from '../actions/types';
+import { SOCKET_SYNC_USER, REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REQUEST_LOGOUT, HYDRATE_APP } from '../actions/types';
 
 const defaultState = InitialState.get('auth');
 
@@ -40,7 +40,7 @@ export default function (state = defaultState, action) {
       return state.set('isFetching', false).set('error', action.message);
     case REQUEST_LOGOUT:
       return defaultState;
-    case IO_SYNC_USER:
+    case SOCKET_SYNC_USER:
       return action.user ? state.set('user', buildUserMap(action.user)) : defaultState;
     default:
       return state;
