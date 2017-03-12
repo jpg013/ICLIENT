@@ -2,14 +2,13 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import UserIcon from '../../icons/user.icon';
 import EditIcon from '../../icons/edit.icon';
+import DeleteIcon from '../../icons/delete.icon'
 import './team-card.css';
 import moment from 'moment';
 
-const teamCard = ({team, editClickHandler}) => {
-  const onEditClick = () => editClickHandler(team);
+const teamCard = ({team, editHandler, removeHandler}) => {
   const formatCreatedDate = createdDate => moment(createdDate).format('MMMM Do, YYYY');
 
-  console.log(team.toJS());
   return (
     <div className="teamCard">
       <div className="teamCard-header">
@@ -38,8 +37,11 @@ const teamCard = ({team, editClickHandler}) => {
             <span className="actionIcon svgIcon_medium">
               <UserIcon />
             </span>
-            <span className="actionIcon svgIcon_medium">
+            <span className="actionIcon svgIcon_medium" onClick={() => editHandler(team)}>
               <EditIcon />
+            </span>
+            <span className="actionIcon svgIcon_medium" onClick={() => removeHandler(team.get('id'))}>
+              <DeleteIcon size={24}/>
             </span>
           </div>
         </div>
@@ -50,7 +52,8 @@ const teamCard = ({team, editClickHandler}) => {
 
 teamCard.propTypes = {
   team: PropTypes.object.isRequired,
-  editClickHandler: PropTypes.func.isRequired
+  editHandler: PropTypes.func.isRequired,
+  removeHandler: PropTypes.func.isRequired
 }
 
 export default teamCard;

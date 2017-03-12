@@ -26,14 +26,17 @@
 }
 
 .adminTeams-body {
-  height: calc(100% - 8rem);
   max-height: calc(100% - 8rem);
   overflow: auto;
   background: transparent;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .adminTeams-body_scrollable {
   width: 100%;
+  padding-top: 2rem;
+  padding-left: 1.5rem;
 }
 
 .adminTeams-addIcon {

@@ -1,0 +1,32 @@
+.slider {
+  position: absolute;
+  right: 0;
+  width: 33rem;
+  background-color: #ffffff;
+  bottom: 1rem;
+  top: 1rem;
+  box-shadow: -3px 3px 5px 0 rgba(0,0,0,0.16);
+  transition: box-shadow 150ms ease, transform 330ms ease-out;
+}
+
+.slider:hover {
+  box-shadow: -3px 3px 10px 2px rgba(0,0,0,0.16);
+}
+
+.sliderTransition-appear {
+  opacity: 0.2;
+}
+
+.sliderTransition-appear.sliderTransition-appear-active {
+  opacity: 1;
+  transition: opacity 330ms ease-out;
+}
+
+.sliderTransition-leave {
+  background-color: pink;
+}
+
+.sliderTransition-leave.sliderTransition-leave-active {
+  background-color: green;
+  transition: all 330ms ease-out;
+}

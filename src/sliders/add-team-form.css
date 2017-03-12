@@ -1,0 +1,125 @@
+.addTeamForm:hover {
+  box-shadow: -3px 3px 10px 2px rgba(0,0,0,0.16);
+}
+
+.addTeamForm-header {
+  height: 8rem;
+  padding: 1rem 0 0 1rem;
+  background: transparent;
+  color: #2f4666;
+  position: relative;
+}
+
+.addTeamForm-header_close {
+  position: absolute;
+  left: 28rem;
+  top: 2.2rem;
+}
+
+.addTeamForm-header_close > svg {
+  fill: #b5bebd;
+
+}
+
+.addTeamForm-header_close:hover {
+  cursor: pointer;
+}
+
+.addTeamForm-header_title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: currentColor;
+  padding-top: 1rem;
+}
+
+.addTeamForm-header_subTitle {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding-top: 1.5rem;
+  color: currentColor;
+}
+
+.addTeamForm-form {
+  padding: 1rem;
+}
+
+.addTeamForm-errors {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #ea7474;
+}
+
+.addTeamForm-formField {
+  display: flex;
+  flex-direction: column;
+  color: #2f4666;
+  padding-top: 2rem;
+}
+
+.addTeamForm-formField_label {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.addTeamForm-formField_label::after {
+  content: '*';
+  position: relative;
+  top: 0px;
+  left: 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ea7474;
+}
+
+.addTeamForm-formField_input {
+  height: 3rem;
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+  border: none;
+  border-bottom: 1px solid #b5bebd;
+  width: 100%;
+
+}
+
+.addTeamForm-formField_indicator {
+  width: 0%;
+  height: 1px;
+  transition: width 330ms;
+  background: #F77D0F;
+  position: relative;
+  top: -1px;
+}
+
+.addTeamForm-formField_active .addTeamForm-formField_indicator {
+  width: 100%;
+}
+
+.addTeamForm-actions {
+  display: flex;
+  height: 5rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.addTeamForm-actionBtn {
+  height: 3rem;
+  width: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  color: #F0F0F0;
+  font-size: 1.4rem;
+}
+
+.addTeamForm-actionBtn_submitting {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.addTeamForm-actionBtn_submitting:hover {
+  cursor: default;
+}

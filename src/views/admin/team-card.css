@@ -2,8 +2,9 @@
   width: 25rem;
   height: 20rem;
   background-color: #f0f0f0;
-  margin: 2rem 1.5rem 0;
+  margin: 0 1.5rem 2rem 0;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  display: inline-block;
 }
 
 .teamCardEnter-appear {

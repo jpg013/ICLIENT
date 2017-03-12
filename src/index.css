@@ -24,6 +24,10 @@ body a {
   color: inherit;
 }
 
+input:focus {
+  outline: none;
+}
+
 .root {
   position: relative;
   height: 100%;

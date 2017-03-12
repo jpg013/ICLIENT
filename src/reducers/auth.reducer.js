@@ -13,10 +13,7 @@ const buildUserMap = user => {
     firstName,
     lastName,
     role,
-    team: Map({
-      createdDate: team.createdDate,
-      name: team.name,
-    })
+    team: Map(team)
   });
 }
 

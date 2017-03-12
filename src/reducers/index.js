@@ -12,15 +12,9 @@ import InitialState from './initial-state';
 import { Map } from 'immutable';
 
 const reducers = Map({
-  dock: DockReducer,
-  graphFilter: GraphFilterReducer,
-  influencers: InfluencersReducer,
-  route: RouteReducer,
-  subjectCarousel: SubjectCarouselReducer,
   auth: AuthReducer,
   reporting: ReportingReducer,
-  admin: AdminReducer,
-  socketRooms: SocketRoomsReducer
+  admin: AdminReducer
 });
 
 const rootReducer = (state = InitialState, action) => {
