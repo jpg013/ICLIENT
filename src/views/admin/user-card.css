@@ -1,0 +1,90 @@
+.userCard {
+  width: 25rem;
+  height: 20rem;
+  background-color: #f0f0f0;
+  margin: 0 1.5rem 2rem 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  display: inline-block;
+}
+
+.userCardEnter-appear {
+  opacity: 0.2;
+  transform: translateY(3rem);
+}
+
+.userCardEnter-appear.userCardEnter-appear-active {
+  transform: translateY(0rem);
+  opacity: 1;
+  transition: transform 330ms ease-out, opacity 330ms ease-out;
+}
+
+.userCard-header {
+  height: 7rem;
+  color: #f0f0f0;
+  background-color: #6d9cbe;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.userCard-headerData {
+  margin-left: 1rem;
+}
+
+.userCard-header_name {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.userCard-header_date {
+  margin: 0.1rem 0 0.3rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.userCard-body {
+  height: 13rem;
+  max-height: 13rem;
+}
+
+.userCard-bodyStats {
+  height: 9rem;
+  max-height: 9rem;
+  border-bottom: 1px solid #b5bebd;
+}
+
+.userCard-bodyData {
+  height: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: #2f4666;
+  display: flex;
+  align-items: center;
+}
+
+.userCard-bodyData_key {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: currentColor;
+  width: 12rem;
+}
+
+.userCard-bodyData_val {
+  font-weight: 100;
+  font-size: 1.4rem;
+  color: currentColor;
+}
+
+.userCard-actions {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.userCard-actionsItem {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}

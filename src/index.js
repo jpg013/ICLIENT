@@ -13,6 +13,7 @@ import AdminHome from './containers/admin-home';
 import Login from './views/login/login';
 import Logout from './views/logout/index';
 import AdminTeams from './views/admin/teams';
+import AdminUsers from './views/admin/users';
 import { initSockJS } from './middleware/socket';
 import { getBootData } from './services/storage.service';
 import './index.css';
@@ -46,12 +47,9 @@ render(
         <Route path="/logout" component={Logout} />
       </Route>
       <Route component={AdminLayout} onEnter={onAdminEnter} >
-        <Route path="/admin" component={AdminHome} >
-
-        </Route>
-        <Route path="/admin/teams" component={AdminTeams}>
-
-        </Route>
+        <Route path="/admin" component={AdminHome} />
+        <Route path="/admin/teams" component={AdminTeams} />
+        <Route path="/admin/users" component={AdminUsers} />
       </Route>
     </Router>
   </Provider>,

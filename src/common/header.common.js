@@ -7,12 +7,7 @@ import './header.common.css';
 
 class Header extends Component {
   render() {
-    const renderUserGreeting = () => {
-      return this.props.userIsAdmin ?
-        <span>Welcome {this.props.user.getIn(['team', 'name'])}</span> :
-        <span>Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</span>
-    }
-
+    const renderUserGreeting = () => (<span>Welcome to the {this.props.user.getIn(['team', 'name'])} Dashboard, {this.props.user.get('firstName')}!</span>)
     return (
       <div className="header">
         <Link to="/" className="header-logoContainer">

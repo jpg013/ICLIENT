@@ -20,4 +20,11 @@ export default Map({
       name: undefined
     })
   }),
+  users: Map({
+    map: OrderedMap()
+  }),
+  slider: Map({
+    name: undefined,
+    model: undefined
+  })
 });

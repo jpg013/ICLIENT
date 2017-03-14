@@ -7,6 +7,8 @@ import AuthReducer from './auth.reducer'
 import ReportingReducer from './reporting.reducer';
 import AdminReducer from './admin.reducer';
 import SocketRoomsReducer from './socket-rooms.reducer';
+import UsersReducer from './users.reducer';
+import SliderReducer from './slider.reducer';
 
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -14,7 +16,9 @@ import { Map } from 'immutable';
 const reducers = Map({
   auth: AuthReducer,
   reporting: ReportingReducer,
-  admin: AdminReducer
+  admin: AdminReducer,
+  users: UsersReducer,
+  slider: SliderReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

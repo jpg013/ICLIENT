@@ -23,7 +23,6 @@ const fetchTeams = () => {
     method: "GET",
     url: "team"
   });
-
   return dispatch => {
     dispatch(requestTeams())
     const subscribe = callApi(config).subscribe(resp => {

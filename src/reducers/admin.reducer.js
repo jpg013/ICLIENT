@@ -45,12 +45,9 @@ export default function (state = defaultState, action) {
     case REQUEST_DELETE_TEAM:
       return state.updateIn(['teams', 'list'], val => val.delete(action.id))
     case RECEIVE_EDIT_TEAM:
-      debugger;
       return state.updateIn(['teams', 'list', action.team.id], cur => {
-        debugger;
         const update = Map(action.team);
         cur = cur.merge(update);
-        debugger;
         return cur;
       })
     default:

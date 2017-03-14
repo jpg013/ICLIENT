@@ -7,6 +7,14 @@
   top: 1rem;
   box-shadow: -3px 3px 5px 0 rgba(0,0,0,0.16);
   transition: box-shadow 150ms ease, transform 330ms ease-out;
+  overflow: hidden;
+  z-index: 100001;
+}
+
+.slider-container {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
 
 .slider:hover {

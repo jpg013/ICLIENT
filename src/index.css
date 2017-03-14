@@ -28,6 +28,10 @@ input:focus {
   outline: none;
 }
 
+select:focus {
+  outline: none;
+}
+
 .root {
   position: relative;
   height: 100%;
