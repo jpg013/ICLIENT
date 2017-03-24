@@ -1,44 +1,34 @@
 import InitialState from './initial-state';
-import { Map } from 'immutable';
+import { buildUserModel } from '../services/users.service';
 import { SOCKET_SYNC_USER, REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, REQUEST_LOGOUT, HYDRATE_APP } from '../actions/types';
 
 const defaultState = InitialState.get('auth');
-
-const buildUserMap = user => {
-  const {id, createdDate, email, firstName, lastName, role, team} = user;
-  return Map({
-    id,
-    createdDate,
-    email,
-    firstName,
-    lastName,
-    role,
-    team: Map(team)
-  });
-}
 
 export default function (state = defaultState, action) {
   switch (action.type) {
     case HYDRATE_APP:
       if (action.data.user) {
-        state = state.set('user', buildUserMap(action.data.user));
+        state = state.set('user', buildUserModel(action.data.user));
       }
-      return state.set('isAuthenticated', !!action.data.authToken);
+      if (action.data.authToken) {
+        state.set('status', 'authenticated');
+      }
+      return state;
     case LOGIN_SUCCESS:
+      debugger;
       return state.withMutations(val => {
-        val.set('isFetching', false);
-        val.set('error', undefined);
-        val.set('user', buildUserMap(action.user));
-        val.set('isAuthenticated', true);
+        val.set('status', 'authenticated');
+        val.set('user', buildUserModel(action.user));
       });
     case REQUEST_LOGIN:
-      return state.set('isFetching', true);
+      return state.set('status', 'authenticating');
     case LOGIN_FAILURE:
-      return state.set('isFetching', false).set('error', action.message);
+      debugger;
+      return state.set('status', 'error');
+    case SOCKET_SYNC_USER:
+      return action.user ? state.set('user', buildUserModel(action.user)) : state;
     case REQUEST_LOGOUT:
       return defaultState;
-    case SOCKET_SYNC_USER:
-      return action.user ? state.set('user', buildUserMap(action.user)) : defaultState;
     default:
       return state;
   }

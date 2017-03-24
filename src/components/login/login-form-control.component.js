@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import './login-form-control.css';
+import './login-form-control.component.css';
 
 const LoginFormControl = (props) => {
   let controlEl;

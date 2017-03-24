@@ -20,7 +20,7 @@ const userCard = ({user, editHandler, removeHandler}) => {
       <div className="userCard-body">
         <div className="userCard-bodyStats">
           <div className="userCard-bodyData">
-            <span className="userCard-bodyData_key">Team Count: </span>
+            <span className="userCard-bodyData_key">Team Name: </span>
             <span className="userCard-bodyData_val">{user.get('userCount') || 0}</span>
           </div>
           <div className="userCard-bodyData">

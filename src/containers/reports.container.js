@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { downloadReport } from '../actions/reporting.actions';
-import ReportSet from '../views/reports/report-set';
+import ReportSet from '../components/reports/report-set';
 import './reports.container.css';
 
 class Reports extends Component {

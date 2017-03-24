@@ -1,0 +1,69 @@
+.login-submit {
+  background: transparent;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-submitBtn {
+  background-color: #E0E0E0;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  overflow: hidden;
+  position: relative;
+  transition: font-size 100ms;
+}
+
+.login-submitBtn-downloadSpinner {
+  position: absolute;
+  left: calc(50% - 1.5rem);
+  top: calc(50% - 1.5rem);
+}
+
+.login-submitBtn-downloadSpinner svg {
+  width: 3rem;
+}
+
+.login-submitBtn_inactive {
+  pointer-events: none;
+  cursor: default;
+  font-size: 0;
+}
+
+.login-submitBtn_submitting:hover {
+  cursor: default;
+}
+
+.login-submitBtn_success {
+
+}
+
+.login-submitBtn_inactive:after {
+  opacity: 1;
+  animation: rotate 1s 0.4s infinite linear;
+}
+
+.login-submitBtn_inactive:hover {
+  cursor: default !import;
+  pointer-events: none;
+}
+
+.login-submitBtn:hover {
+  cursor: pointer;
+}
+
+.login-submitBtn:focus {
+  outline: none;
+}
+
+.login-submitBtn_text {
+  color: #F77D0F;
+  font-size: 1.3em;
+  font-weight: 900;
+}

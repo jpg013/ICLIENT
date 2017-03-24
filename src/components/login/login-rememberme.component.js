@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import './login-rememberme.css';
+import './login-rememberme.component.css';
 
 const LoginRememberMe = ({onChange}) => (
   <div className="login-rememberMe">

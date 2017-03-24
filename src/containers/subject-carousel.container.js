@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import SubjectCarousel from '../views/subjectCarousel/subject-carousel.js';
+import SubjectCarousel from '../components/subjectCarousel/subject-carousel.js';
 import './subject-carousel.container.css';
 import classNames from 'classnames';
 

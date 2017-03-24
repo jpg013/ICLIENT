@@ -1,6 +1,6 @@
 import React from 'react';
 import InnosolLogoIcon from '../../icons/innosol-logo.icon';
-import './login-logo.css';
+import './login-logo.component.css';
 
 const LoginLogo = () => (
   <div className="login-logo">

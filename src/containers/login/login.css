@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   background-color: #2F4666;
+  overflow: hidden;
 }
 
 /*
@@ -27,25 +28,26 @@
    top: calc(30% + 1.5em);
    left: calc(50% - 180px);
    height: 400px;
+   transition: all 0.5s;
  }
 
- .login-formControlsContainer {
+.loginFormEnter-appear {
+  opacity: 0.3;
+  transform: translateY(30px);
+}
+
+.loginFormEnter-appear.loginFormEnter-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.login-formControlsContainer {
    border: 1px solid #E0E0E0;
    height: 124px;
    width: 360px;
    overflow: hidden;
    position: relative;
  }
-
-.loginForm-appear {
-  opacity: 0.1;
-  top: calc(35% + 1.5em);
-}
-
-.loginForm-appear.loginForm-appear-active {
-  opacity: 1;
-  top: calc(30% + 1.5em);
-}
 
 .login-forgotPassword {
   background: transparent;

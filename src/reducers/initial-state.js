@@ -3,12 +3,10 @@ import { Map, List, OrderedMap } from 'immutable';
 export default Map({
   auth: Map({
     user: undefined,
-    isFetching: false,
-    error: undefined,
-    isAuthenticated: false
+    status: undefined
   }),
-  reporting: Map({
-    reportSets: OrderedMap()
+  userReports: Map({
+    collections: OrderedMap()
   }),
   admin: Map({
     teams: Map({

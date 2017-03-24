@@ -1,0 +1,22 @@
+/*
+ * Ripple Effect
+ */
+.ripple {
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  background: rgba(0,0,0,0.6);
+  transform: scale(0);
+  border-radius: 50%;
+}
+
+.ripple_animate {
+  animation: animRipple 230ms;
+}
+
+@keyframes animRipple {
+  to {
+   transform: scale(3.5);
+   opacity: 0.2;
+  }
+}

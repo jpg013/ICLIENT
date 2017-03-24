@@ -1,33 +1,40 @@
 import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
-import { Observable } from 'rxjs/Observable';
+import 'whatwg-fetch';
 import { setAuthToken, removeAuthToken, removeUser, setUser } from '../services/storage.service';
 
-const requestLogin = () => ({ type: REQUEST_LOGIN });
+const requestLogin = creds => ({ type: REQUEST_LOGIN });
 const loginSuccess = user => ({type: LOGIN_SUCCESS, user});
-const loginError = message => ({type: LOGIN_FAILURE, message});
+const loginError = () => ({type: LOGIN_FAILURE});
 const requestLogout = () => ({ type: REQUEST_LOGOUT});
 
 const loginUser = creds => {
-  const config = Object.assign({}, { body: creds }, {
-    method: "POST",
-    url: "/login"
-  });
-
   return dispatch => {
-    dispatch(requestLogin())
-    const subscribe = Observable
-      .ajax(config)
-      .map(resp => resp.response)
-      .subscribe(resp => {
-        subscribe.unsubscribe();
-        if (resp.success) {
-          setAuthToken(resp.token);
-          setUser(resp.user);
-          dispatch(loginSuccess(resp.user));
-        } else {
-          dispatch(loginError(resp.message));
-        }
-      })
+    dispatch(requestLogin());
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds)
+    })
+    .then(function(resp) {
+      if (resp.status !== 200) {
+        throw new Error('There was an error logging in.');
+      }
+      return resp.json();
+    })
+    .then(function(resp) {
+      if (resp.success) {
+        setAuthToken(resp.token);
+        setUser(resp.user);
+        dispatch(loginSuccess(resp.user));
+      } else {
+        dispatch(loginError());
+      }
+    })
+    .catch(function(err) {
+      dispatch(loginError());
+    })
   }
 }
 

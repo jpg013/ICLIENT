@@ -10,10 +10,10 @@ import EmptyLayout from './layouts/empty-layout';
 import AdminLayout from './layouts/admin-layout';
 import Reports from './containers/reports.container';
 import AdminHome from './containers/admin-home';
-import Login from './views/login/login';
-import Logout from './views/logout/index';
-import AdminTeams from './views/admin/teams';
-import AdminUsers from './views/admin/users';
+import Login from './containers/login/login';
+import Logout from './components/logout/index';
+import AdminTeams from './components/admin/teams';
+import AdminUsers from './components/admin/users';
 import { initSockJS } from './middleware/socket';
 import { getBootData } from './services/storage.service';
 import './index.css';
@@ -68,7 +68,7 @@ function onAdminEnter(nextState, replace) {
 }
 
 function isAuthenticated() {
-  return store.getState().getIn(['auth', 'isAuthenticated']);
+  return store.getState().getIn(['auth', 'status']) === 'authenticated';
 }
 
 function isAdmin() {

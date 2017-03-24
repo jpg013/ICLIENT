@@ -1,14 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import LoginLogo from './login-logo';
 import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import LoginFormControl from './login-form-control';
+import LoginLogo from '../../components/login/login-logo.component';
+import LoginFormControl from '../../components/login/login-form-control.component';
 import LoginUsernameIcon from '../../icons/login-username.icon';
 import LoginPasswordIcon from '../../icons/login-password.icon';
-import LoginRememberMe from './login-rememberme';
-import LoginSubmitButton from './login-submit-button';
+import LoginRememberMe from '../../components/login/login-rememberme.component';
+import LoginSubmitButton from '../../components/login/login-submit-button.component';
 import { loginUser } from '../../actions/auth.actions';
 import './login.css';
 
@@ -23,16 +23,12 @@ class Login extends Component {
 
     const onKeydown = e => {
       if (e.keyCode !== 13) return;
-      this.loginClick();
+      this.handleLogin();
     }
     this.keyPressEventHandler = onKeydown.bind(this);
   }
 
-  getLoginFormClassName() {
-    return classNames('login-formControlsContainer', {'login-form_error': this.props.status === 'error'});
-  }
-
-  loginClick() {
+  handleLogin() {
     if (this.props.status === 'submitting') { return; }
     const {email, password, rememberMe} = this.state;
     this.props.onSubmitClick({email, password, rememberMe})
@@ -47,18 +43,27 @@ class Login extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.status === 'success') {
-      browserHistory.push('/');
+    if (this.props.status === 'authenticated') {
+      setTimeout(function() {
+        browserHistory.push('/');
+      }, 250)
     }
   }
 
   render() {
+    const getLoginFormClassName = () => {
+      return classNames(
+        'login-formControlsContainer',
+        {'login-form_error': this.props.status === 'error'}
+      );
+    }
+
     return (
       <div className="login">
         <LoginLogo />
-        <ReactCSSTransitionGroup transitionName="loginForm" transitionAppear={true} transitionAppearTimeout={500} transitionEnter={false} transitionLeave={false}>
+        <ReactCSSTransitionGroup key='loginformenter' transitionName="loginFormEnter" transitionAppear={true} transitionAppearTimeout={0} transitionEnter={false} transitionLeave={false}>
           <div className="login-form">
-            <div className={this.getLoginFormClassName()}>
+            <div className={getLoginFormClassName()}>
               <LoginFormControl inputType="text" controlName="login-email-control" onChange={e => this.setState({email: e.target.value})}>
                 <LoginUsernameIcon />
               </LoginFormControl>
@@ -69,7 +74,7 @@ class Login extends Component {
 
             <LoginRememberMe onChange={e => this.setState({rememberMe: e.target.checked})}/>
 
-            <LoginSubmitButton status={this.props.status} onButtonClick={() => this.loginClick()} />
+            <LoginSubmitButton status={this.props.status} onButtonClick={() => this.handleLogin()} />
 
             <div className="login-forgotPassword">
               <span className="login-forgotPassword_link">Lost your password?</span>
@@ -86,10 +91,7 @@ Login.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const isFetching = state.getIn(['auth', 'isFetching']);
-  const error = state.getIn(['auth', 'error']);
-  const user = state.getIn(['auth', 'user']);
-  const status = isFetching ? 'submitting' : error ? 'error' : user ? 'success' : 'not-submitted';
+  const status = state.getIn(['auth', 'status']) || 'not-submitted';
   return { status };
 }
 
