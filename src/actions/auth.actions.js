@@ -1,5 +1,5 @@
-import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
 import 'whatwg-fetch';
+import { REQUEST_LOGIN, REQUEST_LOGOUT, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
 import { setAuthToken, removeAuthToken, removeUser, setUser } from '../services/storage.service';
 
 const requestLogin = creds => ({ type: REQUEST_LOGIN });

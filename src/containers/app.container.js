@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Header from '../common/header.common';
-import SideMenu from '../common/side-menu.common';
+import Header from '../common/header';
+import SideMenu from '../common/side-menu';
 import GraphDock from './dock.container';
 import { connect } from 'react-redux';
 import './app.container.css';

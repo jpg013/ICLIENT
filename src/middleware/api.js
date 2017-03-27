@@ -1,33 +1,49 @@
-import { Observable } from 'rxjs/Observable';
+import 'whatwg-fetch';
 import { browserHistory } from 'react-router';
 import { getAuthToken } from '../services/storage.service';
 
 const BASE_URL = "/api/";
 
-const callApi = config => {
-  if (!config) { return; }
-  const headers = { headers: { 'Authorization' : `Bearer ${getAuthToken()}` }};
-  const callOptions = Object.assign({}, config, headers, {url: BASE_URL + config.url})
+const buildQueryParams = params => {
+  return Object.keys(params)
+    .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+    .join('&');
+}
 
-  const ajax$ = Observable
-    .ajax(callOptions)
-    .map(resp => resp.response)
-    .publishReplay()
-    .refCount();
-
-  const ajaxSubscribe = ajax$.subscribe(successHandler, errorHandler);
-  return ajax$;
-
-  function successHandler() {
-    ajaxSubscribe.unsubscribe();
+const buildApiUrl = (endpoint, method, opts) => {
+  let url = BASE_URL + endpoint;
+  if (method === 'get' && opts.params) {
+    url = `${url}?${buildQueryParams(opts.params)}`;
   }
+  return url;
+}
 
-  function errorHandler(err) {
-    ajaxSubscribe.unsubscribe();
-    if (err.status === 401) {
-      browserHistory.push('/logout');
-    }
+const buildApiConfig = (url, method, opts) => {
+  let config = {};
+  if (method === 'get') {
+    return config;
   }
+}
+
+
+const callApi = (endpoint, method, opts = {}) => {
+  const headers = {
+    'Authorization' : `Bearer ${getAuthToken()}`,
+    'Content-Type': 'application/json'
+  };
+  const url = buildApiUrl(endpoint, method, opts);
+  const config = Object.assign({}, buildApiConfig(url, method, opts), { headers, method})
+
+  return fetch(url, config)
+    .then(function(resp) {
+      if (resp.status === 401) {
+        browserHistory.push('/logout');
+      }
+      if (resp.success === false) {
+        throw new Error(resp.msg);
+      }
+      return resp.json();
+    })
 }
 
 export { callApi }

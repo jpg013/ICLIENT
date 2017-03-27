@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import InnosolLogoIcon from '../icons/innosol-logo.icon';
 import GearIcon from '../icons/gear.icon'
-import './header.common.css';
+import './header.css';
+
 
 class Header extends Component {
   render() {

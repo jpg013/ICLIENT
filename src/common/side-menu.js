@@ -5,7 +5,7 @@ import InfluenceIcon from '../icons/influence.icon';
 import EngagementIcon from '../icons/engagement.icon';
 import ConnectionIcon from '../icons/connection.icon';
 import CampaignIcon from '../icons/campaign.icon';
-import './side-menu.common.css';
+import './side-menu.css';
 
 class SideMenu extends Component {
   render() {

@@ -8,11 +8,11 @@ import configureStore from './store/configure-store';
 import MainLayout from './layouts/main-layout';
 import EmptyLayout from './layouts/empty-layout';
 import AdminLayout from './layouts/admin-layout';
-import Reports from './containers/reports.container';
-import AdminHome from './containers/admin-home';
+import UserReports from './containers/userReports/user-reports';
+import AdminDashboard from './containers/admin-dashboard';
 import Login from './containers/login/login';
 import Logout from './components/logout/index';
-import AdminTeams from './components/admin/teams';
+import AdminTeams from './containers/adminTeams/admin-teams';
 import AdminUsers from './components/admin/users';
 import { initSockJS } from './middleware/socket';
 import { getBootData } from './services/storage.service';
@@ -40,14 +40,14 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route component={MainLayout} onEnter={requireAuth}>
-        <Route path="/" component={Reports} />
+        <Route path="/" component={UserReports} />
       </Route>
       <Route component={EmptyLayout}>
         <Route path="/login" component={Login} onEnter={unauthorizedOnly} />
         <Route path="/logout" component={Logout} />
       </Route>
       <Route component={AdminLayout} onEnter={onAdminEnter} >
-        <Route path="/admin" component={AdminHome} />
+        <Route path="/admin" component={AdminDashboard} />
         <Route path="/admin/teams" component={AdminTeams} />
         <Route path="/admin/users" component={AdminUsers} />
       </Route>
@@ -72,7 +72,7 @@ function isAuthenticated() {
 }
 
 function isAdmin() {
-  return isAuthenticated() && store.getState().getIn(['auth', 'user', 'role']) === 'sys-admin';
+  return isAuthenticated() && store.getState().getIn(['auth', 'user', 'role']) === 'admin';
 }
 
 function requireAuth (nextState, replace) {

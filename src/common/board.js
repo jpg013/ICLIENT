@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import './board.common.css';
+import './board.css';
 
 class Board extends Component {
   render() {

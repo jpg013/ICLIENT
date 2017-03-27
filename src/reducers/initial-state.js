@@ -6,13 +6,13 @@ export default Map({
     status: undefined
   }),
   userReports: Map({
-    collections: OrderedMap()
+    collection: OrderedMap()
+  }),
+  adminTeams: Map({
+    collection: OrderedMap(),
+    isLoading: false
   }),
   admin: Map({
-    teams: Map({
-      isLoading: false,
-      list: List()
-    }),
     slider: Map({
       status: 'not-submitted',
       name: undefined

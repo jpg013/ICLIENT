@@ -4,6 +4,7 @@ import AdminReducer from './admin.reducer';
 import SocketRoomsReducer from './socket-rooms.reducer';
 import UsersReducer from './users.reducer';
 import SliderReducer from './slider.reducer';
+import AdminTeamsReducer from './admin-teams.reducer';
 import InitialState from './initial-state';
 import { Map } from 'immutable';
 
@@ -12,7 +13,8 @@ const reducers = Map({
   userReports: UserReports,
   admin: AdminReducer,
   users: UsersReducer,
-  slider: SliderReducer
+  slider: SliderReducer,
+  adminTeams: AdminTeamsReducer
 });
 
 const rootReducer = (state = InitialState, action) => {

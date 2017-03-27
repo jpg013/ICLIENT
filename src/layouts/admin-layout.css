@@ -1,3 +1,18 @@
 .adminLayout {
-  
+
+}
+
+.adminSideMenu-item {
+  height: 4rem;
+  font-size: 1.4rem;
+  padding-left: 0.7rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #F0F0F0;
+}
+
+.adminSideMenu-item_active {
+  background-color: #79bbe0;
+  pointer-events: none;
 }

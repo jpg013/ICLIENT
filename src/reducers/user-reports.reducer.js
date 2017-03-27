@@ -26,15 +26,15 @@ const buildReportCollections = reportCollections => {
 export default function (state = defaultState, action) {
   switch (action.type) {
     case RECEIVE_DOWNLOAD_REPORT:
-      return state.updateIn(['reportCollections', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', false));
+      return state.updateIn(['collections', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', false));
     case REQUEST_DOWNLOAD_REPORT:
-      return state.updateIn(['reportCollections', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', true));
+      return state.updateIn(['collections', action.reportSet.get('_id'), 'reports', action.report.get('_id')], cur => cur.set('isDownloading', true));
     case LOGIN_SUCCESS:
-      return state.set('reportCollections', buildReportCollections(action.user.team.reportCollections));
+      return state.set('collections', buildReportCollections(action.user.team.reportCollections));
     case SOCKET_SYNC_USER:
-      return action.user ? state.set('reportCollections', buildReportCollections(action.user.team.reportCollections)) : defaultState;
+      return action.user ? state.set('collections', buildReportCollections(action.user.team.reportCollections)) : defaultState;
     case HYDRATE_APP:
-      return action.data.user ? state.set('reportCollections', buildReportCollections(action.data.user.team.reportCollections)) : state;
+      return action.data.user ? state.set('collections', buildReportCollections(action.data.user.team.reportCollections)) : state;
     default:
       return state;
   }

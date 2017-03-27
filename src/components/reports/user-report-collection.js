@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import ReportCard from './report-card';
-import './report-set.css';
+import UserReportCard from './user-report-card';
+import './user-report-collection.css';
 
-class ReportSet extends Component {
+class UserReportCollection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      closed: true,
-      reportSetElement: undefined
+      expanded: false,
+      collectionEl: undefined
     }
   }
 
@@ -36,7 +36,7 @@ class ReportSet extends Component {
 
   render() {
     const reportList = this.props.reportSet.get('reports').toArray();
-    const buildReportCard = report => <ReportCard key={report.get('_id')}  report={report} downloadHandler={report => this.props.downloadReport(report, this.props.reportSet)} />
+    const buildReportCard = report => <UserReportCard key={report.get('_id')}  report={report} downloadHandler={report => this.props.downloadReport(report, this.props.reportSet)} />
     const renderReportCards = () => reportList.map(cur => buildReportCard(cur))
 
     return (
@@ -53,9 +53,9 @@ class ReportSet extends Component {
   }
 }
 
-ReportSet.propTypes = {
-  reportSet: PropTypes.object.isRequired,
+UserReportCollection.propTypes = {
+  collection: PropTypes.object.isRequired,
   downloadReport: PropTypes.func.isRequired
 }
 
-export default ReportSet;
+export default UserReportCollection;

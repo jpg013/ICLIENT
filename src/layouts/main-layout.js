@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../common/header.common';
-import SideMenu from '../common/side-menu.common';
-import Board from '../common/board.common';
+import Header from '../common/header';
+import SideMenu from '../common/side-menu';
+import Board from '../common/board';
 import { Link } from 'react-router';
 import GraphIcon from '../icons/graph.icon';
 import InfluenceIcon from '../icons/influence.icon';

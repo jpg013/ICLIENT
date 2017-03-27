@@ -11,11 +11,10 @@ export default function (state = defaultState, action) {
         state = state.set('user', buildUserModel(action.data.user));
       }
       if (action.data.authToken) {
-        state.set('status', 'authenticated');
+        state = state.set('status', 'authenticated');
       }
       return state;
     case LOGIN_SUCCESS:
-      debugger;
       return state.withMutations(val => {
         val.set('status', 'authenticated');
         val.set('user', buildUserModel(action.user));
@@ -23,7 +22,6 @@ export default function (state = defaultState, action) {
     case REQUEST_LOGIN:
       return state.set('status', 'authenticating');
     case LOGIN_FAILURE:
-      debugger;
       return state.set('status', 'error');
     case SOCKET_SYNC_USER:
       return action.user ? state.set('user', buildUserModel(action.user)) : state;

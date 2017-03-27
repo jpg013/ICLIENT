@@ -1,0 +1,63 @@
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .boardView {
+    background: transparent;
+    position: absolute;
+    left: 112px;
+    top: 48px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .boardView-container {
+    margin-top: 1rem;
+    height: calc(100% - 20px);
+    padding: 0 1rem;
+  }
+
+  .boardView-containerList {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+  }
+
+  .boardView-containerListHeader {
+    display: flex;
+    height: 8rem;
+    align-items: center;
+    width: 100%;
+    background-color: #b5bebd;
+    box-sizing: border-box;
+  }
+
+  .boardView-containerListHeader {
+    color: #f0f0f0;
+    font-size: 2.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .boardView-containerListBody {
+    width: 100%;
+    overflow: auto;
+    max-height: calc(100% - 8rem);
+    background: transparent;
+  }
+
+  .boardView-containerListBody_scrollable {
+    width: 100%;
+  }
+}
+
+@media screen and (min-device-width: 1600px) {
+  .boardView {
+    background: transparent;
+    position: absolute;
+    left: 168px;
+    top: 72px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    overflow: hidden;
+  }
+}

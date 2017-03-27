@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import LoadingSpinner from '../loadingSpinner/loading-spinner';
 import classNames from 'classnames';
-import './report-card.css';
+import './user-report-card.css';
 
 const reportCard = ({report, downloadHandler}) => {
   const onDownloadClick = () => downloadHandler(report);
