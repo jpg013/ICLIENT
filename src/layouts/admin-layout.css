@@ -27,6 +27,7 @@
 
 .adminSideMenu-itemIcon > svg {
   fill: #F0F0F0;
+  width: 18px;
 }
 
 .adminSideMenu-item_text {

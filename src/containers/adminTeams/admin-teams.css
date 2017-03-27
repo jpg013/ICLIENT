@@ -18,7 +18,29 @@
   padding-left: 1.5rem;
 }
 
-.adminTeams-addIcon {
+.adminTeams-addTeamButton {
+  display: flex;
   margin-left: 1.5rem;
+  color: #6d9cbe;
+  margin-top: 0.7rem;
+  align-items: center;
+}
+
+.adminTeams-addTeamButton:hover {
+  cursor: pointer;
+}
+
+.adminTeams-addTeamButton_font {
+  font-size: 1.4rem;
+  color: currentColor;
+}
+
+.adminTeams-addTeamButton_icon {
   margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.adminTeams-addTeamButton_icon > svg {
+  width: 24px;
+  fill: currentColor;
 }

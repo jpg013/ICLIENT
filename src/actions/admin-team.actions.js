@@ -18,7 +18,7 @@ const fetchTeams = () => {
       .then(function(resp) {
         setTimeout(function() {
           dispatch(receiveTeams(resp.data));
-        }, 5000);
+        }, 2000);
       })
   }
 }

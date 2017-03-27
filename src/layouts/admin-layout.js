@@ -4,7 +4,6 @@ import Header from '../common/header';
 import SideMenu from '../common/side-menu';
 import { Link } from 'react-router';
 import DashboardIcon from '../icons/dashboard.icon';
-import GroupIcon from '../icons/group.icon';
 import PeopleIcon from '../icons/people.icon';
 import './admin-layout.css'
 

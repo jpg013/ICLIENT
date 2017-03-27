@@ -1,8 +1,8 @@
 .adminTeamCard {
-  width: 25rem;
-  height: 20rem;
+  width: 33rem;
+  height: 25rem;
   background-color: #f0f0f0;
-  margin: 0 1.5rem 2rem 0;
+  margin: 0 2.5rem 2rem 0;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   display: inline-block;
   transition: all 200ms ease-out;
@@ -14,15 +14,20 @@
   box-shadow: 0 3px 15px 1px rgba(0,0,0,0.25);
 }
 
-.adminTeamCardEnter-appear {
-  opacity: 0.2;
-  transform: translateY(3rem);
+.adminTeamCard-logo {
+  height: 100%;
+  width: 12rem;
+  display: flex;
+  padding-right: 1rem;
+  padding-left: 0.5rem;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-.adminTeamCardEnter-appear.adminTeamCardEnter-appear-active {
-  transform: translateY(0rem);
-  opacity: 1;
-  transition: transform 330ms ease-out, opacity 330ms ease-out;
+.adminTeamCard-logo_img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .adminTeamCard-header {
@@ -34,16 +39,17 @@
   align-items: flex-end;
 }
 
-.adminTeamCard-headerData {
-  margin-left: 1rem;
+.adminTeamCard-headerTitle {
+  padding-left: 1rem;
+  width: 21rem;
 }
 
-.adminTeamCard-header_name {
-  font-size: 1.7rem;
+.adminTeamCard-headerTitle_name {
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
-.adminTeamCard-header_date {
+.adminTeamCard-headerTitle_date {
   margin: 0.1rem 0 0.3rem 1.5rem;
   font-size: 1.1rem;
   font-weight: 300;
@@ -54,32 +60,71 @@
   max-height: 13rem;
 }
 
-.adminTeamCard-bodyStats {
-  height: 9rem;
-  max-height: 9rem;
+.adminTeamCard-stats {
   border-bottom: 1px solid #b5bebd;
 }
 
-.adminTeamCard-bodyData {
-  height: 3rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+.adminTeamCard-StatRow {
+  height: 5rem;
   color: #2f4666;
   display: flex;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
-.adminTeamCard-bodyData_key {
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: currentColor;
-  width: 12rem;
+.adminTeamCard-StatRow:last-of-type {
+  margin-bottom: 0.5rem;
 }
 
-.adminTeamCard-bodyData_val {
+.adminTeamCard-StatItemSeparator {
+  height: 80%;
+  align-self: center;
+  width: 1px;
+  background-color: #b5bebd;
+}
+
+.adminTeamCard-StatItem {
+  width: 11rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminTeamCard-StatItemTop {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminTeamCard-StatItemTop_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+}
+
+.adminTeamCard-StatItemTop_icon > svg {
+  fill: currentColor;
+  width: 24px;
+}
+
+.adminTeamCard-StatItemTop_data {
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 0.5rem;
+}
+
+.adminTeamCard-StatItemLabel {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  font-size: 1.2rem;
   font-weight: 100;
-  font-size: 1.4rem;
   color: currentColor;
+  justify-content: center;
+  align-items: center;
 }
 
 .adminTeamCard-actions {
@@ -94,4 +139,19 @@
   align-items: center;
   justify-content: flex-start;
   padding-left: 1rem;
+}
+
+
+/**
+ * Enter Transition
+ */
+.adminTeamCardEnter-appear {
+ opacity: 0.2;
+ transform: translateY(3rem);
+}
+
+.adminTeamCardEnter-appear.adminTeamCardEnter-appear-active {
+ transform: translateY(0rem);
+ opacity: 1;
+ transition: transform 330ms ease-out, opacity 330ms ease-out;
 }

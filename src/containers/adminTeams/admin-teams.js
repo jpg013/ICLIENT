@@ -4,7 +4,7 @@ import { fetchTeams } from '../../actions/admin-team.actions';
 import AdminTeamCard from '../../components/adminTeamCard/admin-team-card';
 import BoardLoading from '../../components/boardLoading/board-loading';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import GroupIcon from '../../icons/group.icon';
+import AddGroupIcon from '../../icons/add-group.icon';
 import AddTeamForm from '../../sliders/add-team-form';
 import './admin-teams.css';
 
@@ -39,6 +39,18 @@ class AdminTeams extends Component {
       if (this.props.isLoading) return '';
       return teams.length === 1 ? '1 Team' : `${teams.length} Teams`;
     }
+    const renderAddTeamButton = () => {
+      return (
+        <span className="adminTeams-addTeamButton">
+          <div className="adminTeams-addTeamButton_font">
+            Add a team
+          </div>
+          <div className="adminTeams-addTeamButton_icon">
+            <AddGroupIcon />
+          </div>
+        </span>
+      )
+    }
     const renderLoadingSpinner = () => (<BoardLoading />) ;
 
     return (
@@ -47,9 +59,7 @@ class AdminTeams extends Component {
         <div className="boardView-containerList">
           <div className="boardView-containerListHeader">
             <span className="adminTeams-title">{getTitle()}</span>
-            <span className="actionIcon adminTeams-addIcon">
-              <GroupIcon height={36}/>
-            </span>
+            {!this.props.isLoading && renderAddTeamButton()}
           </div>
 
           <div className="adminTeams-body">

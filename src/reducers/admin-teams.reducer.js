@@ -7,18 +7,16 @@ const defaultState = InitialState.get('adminTeams');
 
 const buildTeamMap = data => {
   const createdDate = new Date(data.createdDate);
+  const lastActivityDate = data.lastActivityDate ? new Date(data.lastActivityDate) : undefined;
+  const formattedLastActivityDate = lastActivityDate ? moment(lastActivityDate).format('MMMM Do, YYYY') : 'never';
   const formattedCreatedDate = moment(createdDate).format('MMMM Do, YYYY');
-  const {id, userCount, name, reportCount, reportCollectionCount, neo4jAuth, neo4jConnection} = data;
+  const {id, userCount, name, reportCount, reportCollectionCount, neo4jAuth, neo4jConnection, logoUrl} = data;
   return Map({
-    id,
-    userCount,
-    name,
-    reportCount,
+    ...data,
     createdDate,
     formattedCreatedDate,
-    reportCollectionCount,
-    neo4jAuth,
-    neo4jConnection
+    lastActivityDate,
+    formattedLastActivityDate,
   });
 }
 

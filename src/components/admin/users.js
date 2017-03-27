@@ -4,7 +4,7 @@ import { fetchUsers, createUser, editUser, deleteUser } from '../../actions/user
 import { openSlider, closeSlider } from '../../actions/slider.actions';
 import UserCard from './user-card';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import GroupIcon from '../../icons/group.icon';
+import GroupIcon from '../../icons/add-group.icon';
 import ReactTransitionGroup from 'react-addons-transition-group'
 import Slider from '../../sliders/slider';
 import UserForm from './user-form';
