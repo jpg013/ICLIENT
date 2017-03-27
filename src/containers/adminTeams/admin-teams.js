@@ -1,22 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchTeams } from '../../actions/admin-team.actions';
-//createTeam, openAdminSlider, closeAdminSlider, deleteTeam, editTeam
-import TeamCard from './team-card';
+import AdminTeamCard from '../../components/adminTeamCard/admin-team-card';
 import BoardLoading from '../../components/boardLoading/board-loading';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import GroupIcon from '../../icons/group.icon';
 import AddTeamForm from '../../sliders/add-team-form';
-import ReactTransitionGroup from 'react-addons-transition-group'
-import Slider from '../../sliders/slider';
 import './admin-teams.css';
 
 class AdminTeams extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      slider: undefined
-    };
   }
 
   componentWillMount() {
@@ -29,10 +23,10 @@ class AdminTeams extends Component {
 
   render() {
     const teams = this.props.teamCollection.toArray();
-    const wrapCardEnterAnimation = (teamCard, id) => (<ReactCSSTransitionGroup key={id} transitionName="teamCardEnter" transitionAppear={true} transitionAppearTimeout={0} transitionEnter={false} transitionLeave={false}>{teamCard}</ReactCSSTransitionGroup>);
+    const wrapCardEnterAnimation = (teamCard, id) => (<ReactCSSTransitionGroup key={id} transitionName="adminTeamCardEnter" transitionAppear={true} transitionAppearTimeout={0} transitionEnter={false} transitionLeave={false}>{teamCard}</ReactCSSTransitionGroup>);
     const buildTeamCard = team => {
       return (
-        <TeamCard
+        <AdminTeamCard
           key={team.get('id')}
           team={team}
           editHandler={team => this.props.openAdminSlider('editTeam', team)}
@@ -42,12 +36,9 @@ class AdminTeams extends Component {
     }
     const renderTeamCards = () => teams.map(cur => wrapCardEnterAnimation(buildTeamCard(cur), cur.get('id')));
     const getTitle = () => {
-      if (this.props.isLoading) {
-        return '';
-      }
+      if (this.props.isLoading) return '';
       return teams.length === 1 ? '1 Team' : `${teams.length} Teams`;
     }
-
     const renderLoadingSpinner = () => (<BoardLoading />) ;
 
     return (
