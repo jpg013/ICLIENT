@@ -1,0 +1,19 @@
+.boardLoading {
+  position: absolute;
+  top: calc(50% - 4rem);
+  left: calc(50% - 4rem);
+  animation-name: board-loading-spin;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+}
+
+.boardLoading > svg {
+  fill: #b5bebd;
+  width: 8rem;
+}
+
+@keyframes board-loading-spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}

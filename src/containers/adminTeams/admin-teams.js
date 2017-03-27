@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchTeams } from '../../actions/admin-team.actions';
 //createTeam, openAdminSlider, closeAdminSlider, deleteTeam, editTeam
 import TeamCard from './team-card';
+import BoardLoading from '../../components/boardLoading/board-loading';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import GroupIcon from '../../icons/group.icon';
 import AddTeamForm from '../../sliders/add-team-form';
@@ -23,7 +24,7 @@ class AdminTeams extends Component {
   }
 
   componentWillUnmount() {
-    
+
   }
 
   render() {
@@ -47,8 +48,11 @@ class AdminTeams extends Component {
       return teams.length === 1 ? '1 Team' : `${teams.length} Teams`;
     }
 
+    const renderLoadingSpinner = () => (<BoardLoading />) ;
+
     return (
       <div className="boardView-container">
+        {this.props.isLoading && renderLoadingSpinner()}
         <div className="boardView-containerList">
           <div className="boardView-containerListHeader">
             <span className="adminTeams-title">{getTitle()}</span>
