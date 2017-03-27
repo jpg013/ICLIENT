@@ -10,7 +10,6 @@ const buildTeamMap = data => {
   const lastActivityDate = data.lastActivityDate ? new Date(data.lastActivityDate) : undefined;
   const formattedLastActivityDate = lastActivityDate ? moment(lastActivityDate).format('MMMM Do, YYYY') : 'never';
   const formattedCreatedDate = moment(createdDate).format('MMMM Do, YYYY');
-  const {id, userCount, name, reportCount, reportCollectionCount, neo4jAuth, neo4jConnection, logoUrl} = data;
   return Map({
     ...data,
     createdDate,
