@@ -19,17 +19,18 @@ const buildTeamMap = data => {
   });
 }
 
+const sortTeamCollection = teamCollection => teamCollection.sort((a, b) => a.get('createdDate').getTime() < b.get('createdDate').getTime());
+
 export default function (state = defaultState, action) {
   switch (action.type) {
     case REQUEST_TEAMS:
       return state.set('isLoading', true);
     case RECEIVE_TEAMS:
-      debugger;
       const teamCollection = action.teams.map(buildTeamMap)
         .reduce((acc, cur) => {
           return acc.set(cur.get('id'), cur);
         }, OrderedMap());
-      return state.set('collection', teamCollection).set('isLoading', false);
+      return state.set('collection', sortTeamCollection(teamCollection)).set('isLoading', false);
     default:
       return state;
   }

@@ -16,7 +16,9 @@ const fetchTeams = () => {
     dispatch(requestTeams())
     const teamsPromise = callApi('teams', 'get')
       .then(function(resp) {
-        dispatch(receiveTeams(resp.data));
+        setTimeout(function() {
+          dispatch(receiveTeams(resp.data));
+        }, 5000);
       })
   }
 }

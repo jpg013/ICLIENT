@@ -6,7 +6,7 @@
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
   .sideMenu {
-    width: 112px;
+    width: 132px;
     background-color: #4f5959;
     position: fixed;
     top: 48px;
@@ -19,8 +19,8 @@
   }
 
   .sideMenu-btn {
-    height: 112px;
-    width: 112px;
+    height: 132px;
+    width: 132px;
     display: flex;
     margin-top: 2px;
     align-items: center;

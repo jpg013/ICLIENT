@@ -14,10 +14,14 @@
     display: flex;
     margin-right: auto;
     height: 100%;
-    width: 112px;
+    width: 132px;
     align-items: center;
     justify-content: center;
     background-color: #b5bebd;
+  }
+
+  .header-logoContainer > svg {
+    width: 100px;
   }
 
   .header-logout {
