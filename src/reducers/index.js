@@ -3,7 +3,7 @@ import UserReports from './user-reports.reducer';
 //import AdminReducer from './admin.reducer';
 import SocketRoomsReducer from './socket-rooms.reducer';
 import UsersReducer from './users.reducer';
-import SideDockReducer from './side-dock.reducer';
+import AdminDockReducer from './admin-dock.reducer';
 import AdminTeamsReducer from './admin-teams.reducer';
 import InitialState from './initial-state';
 import { Map } from 'immutable';
@@ -12,7 +12,7 @@ const reducers = Map({
   auth: AuthReducer,
   userReports: UserReports,
   users: UsersReducer,
-  sideDock: SideDockReducer,
+  adminDock: AdminDockReducer,
   adminTeams: AdminTeamsReducer
 });
 

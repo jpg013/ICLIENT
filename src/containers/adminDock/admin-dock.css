@@ -1,4 +1,4 @@
-.sideDock {
+.adminDock {
   position: absolute;
   right: 0;
   width: 35rem;
@@ -12,25 +12,25 @@
   transform: translateX(36rem);
 }
 
-.sideDock_open {
+.adminDock_open {
   transform: translateX(0);
 }
 
-.sideDock-container {
+.adminDock-container {
   height: 100%;
   width: 100%;
   overflow: scroll;
 }
 
-.sideDock:hover {
+.adminDock:hover {
   box-shadow: -3px 3px 10px 2px rgba(0,0,0,0.16);
 }
 
-.sideDockChildTransition-leave {
+.adminDockChildTransition-leave {
   opacity: 1
 }
 
-.sideDockChildTransition-leave.sideDockChildTransition-leave-active {
+.adminDockChildTransition-leave.adminDockChildTransition-leave-active {
   opacity: 0.01;
   transition: opacity 200ms ease-in;
 }

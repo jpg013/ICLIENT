@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchTeams } from '../../actions/admin-teams.actions';
-import { openSideDock } from '../../actions/side-dock.actions';
+import { openAdminDock } from '../../actions/admin-dock.actions';
 import AdminTeamCard from '../../components/adminTeamCard/admin-team-card';
 import BoardLoading from '../../components/boardLoading/board-loading';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -36,7 +36,7 @@ class AdminTeams extends Component {
     }
 
     const handleAddTeamClick = () => {
-      this.props.openSideDock(buildNewTeamModel());
+      this.props.openAdminDock(buildNewTeamModel());
     }
 
     const renderAddTeamButton = () => {
@@ -87,7 +87,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTeams: () => dispatch(fetchTeams()),
-    openSideDock: model => dispatch(openSideDock(model))
+    openAdminDock: model => dispatch(openAdminDock(model))
     //createTeam: data => dispatch(createTeam(data)),
     //editTeam: data => dispatch(editTeam(data)),
     //deleteTeam: id => dispatch(deleteTeam(id)),

@@ -38,9 +38,9 @@ export const REQUEST_EDIT_TEAM = "REQUEST_EDIT_TEAM";
 export const RECEIVE_EDIT_TEAM = "RECEIVE_EDIT_TEAM";
 export const REQUEST_DELETE_TEAM = "REQUEST_DELETE_TEAM";
 
-/* Side Dock */
-export const OPEN_SIDE_DOCK = "OPEN_SIDE_DOCK";
-export const CLOSE_SIDE_DOCK = "CLOSE_SIDE_DOCK";
+/* Admin Dock */
+export const OPEN_ADMIN_DOCK = "OPEN_ADMIN_DOCK";
+export const CLOSE_ADMIN_DOCK = "CLOSE_ADMIN_DOCK";
 
 /* User */
 export const REQUEST_USERS = "REQUEST_USERS";

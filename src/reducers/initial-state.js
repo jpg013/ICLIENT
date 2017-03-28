@@ -21,7 +21,8 @@ export default Map({
   users: Map({
     map: OrderedMap()
   }),
-  sideDock: Map({
+  adminDock: Map({
+    isOpen: false,
     originalModel: undefined,
     updatedModel: undefined
   })
