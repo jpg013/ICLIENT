@@ -1,24 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchTeams } from '../../actions/admin-team.actions';
+import { fetchTeams } from '../../actions/admin-teams.actions';
+import { openSideDock } from '../../actions/side-dock.actions';
 import AdminTeamCard from '../../components/adminTeamCard/admin-team-card';
 import BoardLoading from '../../components/boardLoading/board-loading';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AddGroupIcon from '../../icons/add-group.icon';
-import AddTeamForm from '../../sliders/add-team-form';
+import { buildNewTeamModel } from '../../services/teams.service';
 import './admin-teams.css';
 
 class AdminTeams extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
-    this.props.fetchTeams();
-  }
-
-  componentWillUnmount() {
-
+    if (this.props.status === 'not-loaded') {
+      this.props.fetchTeams();
+    }
   }
 
   render() {
@@ -36,30 +31,35 @@ class AdminTeams extends Component {
     }
     const renderTeamCards = () => teams.map(cur => wrapCardEnterAnimation(buildTeamCard(cur), cur.get('id')));
     const getTitle = () => {
-      if (this.props.isLoading) return '';
+      if (this.props.status === 'loading') return '';
       return teams.length === 1 ? '1 Team' : `${teams.length} Teams`;
     }
+
+    const handleAddTeamClick = () => {
+      this.props.openSideDock(buildNewTeamModel());
+    }
+
     const renderAddTeamButton = () => {
       return (
-        <span className="adminTeams-addTeamButton">
+        <div className="adminTeams-addTeamButton" onClick={() => handleAddTeamClick()}>
           <div className="adminTeams-addTeamButton_font">
             Add a team
           </div>
           <div className="adminTeams-addTeamButton_icon">
             <AddGroupIcon />
           </div>
-        </span>
+        </div>
       )
     }
     const renderLoadingSpinner = () => (<BoardLoading />) ;
 
     return (
       <div className="boardView-container">
-        {this.props.isLoading && renderLoadingSpinner()}
+        {(this.props.status === 'loading') && renderLoadingSpinner()}
         <div className="boardView-containerList">
           <div className="boardView-containerListHeader">
             <span className="adminTeams-title">{getTitle()}</span>
-            {!this.props.isLoading && renderAddTeamButton()}
+            {!(this.props.status === 'loading') && renderAddTeamButton()}
           </div>
 
           <div className="adminTeams-body">
@@ -80,13 +80,14 @@ AdminTeams.propTypes = {
 const mapStateToProps = state => {
   return {
     teamCollection: state.getIn(['adminTeams', 'collection']),
-    isLoading: state.getIn(['adminTeams', 'isLoading'])
+    status: state.getIn(['adminTeams', 'status'])
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchTeams: () => dispatch(fetchTeams()),
+    openSideDock: model => dispatch(openSideDock(model))
     //createTeam: data => dispatch(createTeam(data)),
     //editTeam: data => dispatch(editTeam(data)),
     //deleteTeam: id => dispatch(deleteTeam(id)),

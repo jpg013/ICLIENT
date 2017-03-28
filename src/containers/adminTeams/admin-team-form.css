@@ -104,14 +104,21 @@
 }
 
 .addTeamForm-actionBtn {
-  height: 3rem;
-  width: 9rem;
+  background: transparent;
+  height: 4rem;
+  width: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 2px;
-  color: #F0F0F0;
+  border-radius: 5px;
+  color: currentColor;
   font-size: 1.4rem;
+  border: 1px solid #6d9cbe;
+}
+
+.addTeamForm-actionBtn:hover {
+  cursor: pointer;
+  border: 1px solid #79bbe0;
 }
 
 .addTeamForm-actionBtn_submitting {

@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers, createUser, editUser, deleteUser } from '../../actions/users.actions';
-import { openSlider, closeSlider } from '../../actions/slider.actions';
 import UserCard from './user-card';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import GroupIcon from '../../icons/add-group.icon';
 import ReactTransitionGroup from 'react-addons-transition-group'
-import Slider from '../../sliders/slider';
 import UserForm from './user-form';
 import { buildDirtyUserModel } from '../../services/users.service';
 import './users.css';
@@ -41,6 +39,7 @@ class Users extends Component {
     const onAddUserClick = () => this.props.openSlider('addUser', buildDirtyUserModel());
 
     const renderSlider = () => {
+      /*
       if (!this.props.slider || !this.props.slider.get('name')) return;
       let sliderChild = React.cloneElement(<UserForm />, {
         model: this.props.slider.get('model'),
@@ -48,12 +47,11 @@ class Users extends Component {
         submitHandler: onSliderSubmit,
       });
       return (<ReactTransitionGroup><Slider className="slider-container">{sliderChild}</Slider></ReactTransitionGroup>)
+      */
     }
 
     return (
       <div className="users">
-
-        {this.props.slider && renderSlider()}
 
         <div className="users-list">
           <div className="users-header">
@@ -81,7 +79,6 @@ Users.propTypes = {
 const mapStateToProps = state => {
   return {
     users: state.get('users'),
-    slider: state.get('slider')
   };
 }
 
@@ -89,10 +86,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
     createUser: model => dispatch(createUser(model)),
-    editUser: model => dispatch(editUser(model)),
-    openSlider: (name, model) => dispatch(openSlider(name, model)),
-    closeSlider: () => dispatch(closeSlider()),
-    deleteUser: id => dispatch(deleteUser(id))
+    editUser: model => dispatch(editUser(model))
   }
 }
 

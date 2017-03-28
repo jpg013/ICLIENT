@@ -29,17 +29,18 @@ export const SOCKET_ROOM_NOTIFICATION = "SOCKET_ROOM_NOTIFICATION";
 /* Admin Teams */
 export const REQUEST_TEAMS = "REQUEST_ADMIN_TEAMS";
 export const RECEIVE_TEAMS = "RECEIVE_ADMIN_TEAMS";
-
-/* Admin */
 export const REQUEST_ADD_TEAM = "REQUEST_ADD_TEAM";
 export const RECEIVE_ADD_TEAM = "RECEIEVE_ADD_TEAM";
+
+
+/* Admin */
 export const REQUEST_EDIT_TEAM = "REQUEST_EDIT_TEAM";
 export const RECEIVE_EDIT_TEAM = "RECEIVE_EDIT_TEAM";
 export const REQUEST_DELETE_TEAM = "REQUEST_DELETE_TEAM";
 
-/* Admin Slider */
-export const OPEN_ADMIN_SLIDER = "OPEN_ADMIN_SLIDER";
-export const CLOSE_ADMIN_SLIDER = "CLOSE_ADMIN_SLIDER";
+/* Side Dock */
+export const OPEN_SIDE_DOCK = "OPEN_SIDE_DOCK";
+export const CLOSE_SIDE_DOCK = "CLOSE_SIDE_DOCK";
 
 /* User */
 export const REQUEST_USERS = "REQUEST_USERS";

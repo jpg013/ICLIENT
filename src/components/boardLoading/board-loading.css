@@ -1,4 +1,5 @@
 .boardLoading {
+  z-index: 100001;
   position: absolute;
   top: calc(50% - 4rem);
   left: calc(50% - 4rem);

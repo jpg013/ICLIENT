@@ -10,7 +10,7 @@ export default Map({
   }),
   adminTeams: Map({
     collection: OrderedMap(),
-    isLoading: false
+    status: 'not-loaded'
   }),
   admin: Map({
     slider: Map({
@@ -21,8 +21,8 @@ export default Map({
   users: Map({
     map: OrderedMap()
   }),
-  slider: Map({
-    name: undefined,
-    model: undefined
+  sideDock: Map({
+    originalModel: undefined,
+    updatedModel: undefined
   })
 });

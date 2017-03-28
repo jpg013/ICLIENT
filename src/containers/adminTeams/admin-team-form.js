@@ -1,10 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import ClearIcon from '../icons/clear.icon';
+import ClearIcon from '../../icons/clear.icon';
 import classNames from 'classnames';
-import './add-team-form.css';
+import './admin-team-form.css';
 
-class AddTeamForm extends Component {
+class AdminTeamForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,15 +35,20 @@ class AddTeamForm extends Component {
     const name = this.state.formRef.querySelector("#add-team-form-name").value;
     const neo4jConnection = this.state.formRef.querySelector("#add-team-form-connection").value;
     const neo4jAuth = this.state.formRef.querySelector("#add-team-form-auth").value;
+    const imageURL = this.state.formRef.querySelector("#add-team-image-url").value;
 
-    if (!name.trim() || !neo4jConnection.trim() || !neo4jAuth.trim()) {
+    if (!name.trim() || !neo4jConnection.trim() || !neo4jAuth.trim() || !imageURL.trim()) {
       return this.setState({ errors: ['Please fill out all required fields'] });
     }
-    const data = {name, neo4jConnection, neo4jAuth};
+
+    const data = { name, neo4jConnection, neo4jAuth, imageURL};
+
     if (this.props.data) {
       data.id = this.props.data.get('id');
     }
-    this.props.submitHandler(data);
+
+    const formType = data.id ? 'updateTeam' : 'addTeam';
+    this.props.submitHandler(formType, data);
   }
 
   render() {
@@ -53,12 +58,13 @@ class AddTeamForm extends Component {
     }
 
     const getBtnClassNames = () => {
-      return classNames('addTeamForm-actionBtn', 'actionItem', {'addTeamForm-actionBtn_submitting': this.props.status === 'submitting'});
+      return classNames('addTeamForm-actionBtn', {'addTeamForm-actionBtn_submitting': this.props.status === 'submitting'});
     }
 
     const getDefaultNameVal = () => this.props.data ? this.props.data.get('name') : '';
     const getDefaultConnectionVal = () => this.props.data ? this.props.data.get('neo4jConnection') : '';
     const getDefaultAuthVal = () => this.props.data ? this.props.data.get('neo4jAuth') : '';
+    const getDefaultImageUrl = () => this.props.data ? this.props.data.get('logoURL') : '';
     const getFormTitle = () => this.props.data ? `Edit Team ${this.props.data.get('name')}` : 'Create a New Team';
 
     return (
@@ -90,6 +96,12 @@ class AddTeamForm extends Component {
             <input defaultValue={getDefaultAuthVal()} id="add-team-form-auth" onBlur={e => this.removeInputFocus(e)} onFocus={e => this.addInputFocus(e)} className="addTeamForm-formField_input" placeholder="Neo4j Auth String" />
             <div className="addTeamForm-formField_indicator"></div>
           </div>
+
+          <div className="addTeamForm-formField">
+            <label htmlFor="add-team-image-url" className="addTeamForm-formField_label">Team Image URL</label>
+            <input defaultValue={getDefaultImageUrl()} id="add-team-image-url" onBlur={e => this.removeInputFocus(e)} onFocus={e => this.addInputFocus(e)} className="addTeamForm-formField_input" placeholder="Image URL" />
+            <div className="addTeamForm-formField_indicator"></div>
+          </div>
         </div>
         <div className="addTeamForm-actions">
           <div className={getBtnClassNames()} onClick={() => this.onSubmit()}>Submit</div>
@@ -99,10 +111,10 @@ class AddTeamForm extends Component {
   }
 }
 
-AddTeamForm.propTypes = {
+AdminTeamForm.propTypes = {
   closeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
-  data: PropTypes.object
+  model: PropTypes.object.isRequired
 }
 
-export default AddTeamForm;
+export default AdminTeamForm;

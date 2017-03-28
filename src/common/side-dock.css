@@ -1,0 +1,36 @@
+.sideDock {
+  position: absolute;
+  right: 0;
+  width: 35rem;
+  background-color: #ffffff;
+  bottom: 1rem;
+  top: 1rem;
+  box-shadow: -3px 3px 5px 0 rgba(0,0,0,0.16);
+  transition: box-shadow 200ms ease, transform 200ms ease-out;
+  overflow: hidden;
+  z-index: 100001;
+  transform: translateX(36rem);
+}
+
+.sideDock_open {
+  transform: translateX(0);
+}
+
+.sideDock-container {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.sideDock:hover {
+  box-shadow: -3px 3px 10px 2px rgba(0,0,0,0.16);
+}
+
+.sideDockChildTransition-leave {
+  opacity: 1
+}
+
+.sideDockChildTransition-leave.sideDockChildTransition-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}

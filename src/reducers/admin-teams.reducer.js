@@ -24,13 +24,13 @@ const sortTeamCollection = teamCollection => teamCollection.sort((a, b) => b.get
 export default function (state = defaultState, action) {
   switch (action.type) {
     case REQUEST_TEAMS:
-      return state.set('isLoading', true);
+      return state.set('status', 'loading');
     case RECEIVE_TEAMS:
       const teamCollection = action.teams.map(buildTeamMap)
         .reduce((acc, cur) => {
           return acc.set(cur.get('id'), cur);
         }, OrderedMap());
-      return state.set('collection', sortTeamCollection(teamCollection)).set('isLoading', false);
+      return state.set('collection', sortTeamCollection(teamCollection)).set('status', 'loaded');
     default:
       return state;
   }
