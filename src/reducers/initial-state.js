@@ -1,4 +1,4 @@
-import { Map, List, OrderedMap } from 'immutable';
+import { Map, OrderedMap } from 'immutable';
 
 export default Map({
   auth: Map({
@@ -23,7 +23,6 @@ export default Map({
   }),
   adminDock: Map({
     isOpen: false,
-    originalModel: undefined,
-    updatedModel: undefined
+    persistedModel: undefined
   })
 });

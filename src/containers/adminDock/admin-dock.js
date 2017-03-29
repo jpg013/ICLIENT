@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 import { addTeam } from '../../actions/admin-teams.actions';
@@ -8,23 +8,24 @@ import classNames from 'classnames';
 import './admin-dock.css';
 
 class AdminDock extends Component {
-  handleSubmitForm(formType, data) {
-    if (!data) return;
-    switch(formType) {
-      case 'addTeam':
-        return this.props.addTeam(data);
+  handleSubmitForm(model) {
+    if (!model) return;
+    switch(model.get('type')) {
+      case 'team':
+        return !model.get('id') ? this.props.addTeam(model) : undefined
+      default:
+        return;
     }
   }
 
   renderAdminDockContent() {
     if (!this.props.dockState.get('isOpen')) return;
 
-    switch(this.props.dockState.getIn(['originalModel', 'type'])) {
+    switch(this.props.dockState.getIn(['persistedModel', 'type'])) {
       case 'team':
         return (
           <AdminTeamForm
-            originalModel={this.props.dockState.get('originalModel')}
-            updatedModel={this.props.dockState.get('updatedModel')}
+            persistedModel={this.props.dockState.get('persistedModel')}
             closeHandler={() => this.props.closeAdminDock()}
             submitHandler={(formType, data) => this.handleSubmitForm(formType, data)}
           />
@@ -57,7 +58,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeAdminDock: () => dispatch(closeAdminDock()),
-    addTeam: teamData => dispatch(addTeam(teamData))
+    addTeam: teamModel => dispatch(addTeam(teamModel))
   }
 }
 

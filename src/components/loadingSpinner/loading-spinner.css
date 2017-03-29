@@ -1,8 +1,14 @@
-.checkmark {
-  width: 44px;
+.loadingSpinner > svg {
+  stroke: #F77D0F;
+  transition: stroke 1s ease-out;
 }
 
-.path {
+.loadingSpinner_success > svg {
+  stroke: #74ea96;
+  fill: #74ea96;
+}
+
+.loadingSpinner-inProgress {
   stroke-dasharray: 300;
   stroke-dashoffset: 0;
   animation-iteration-count: infinite;
@@ -11,9 +17,37 @@
   animation-timing-function: linear;
   transform-origin: 50% 50%;
   fill: none;
-  stroke: #F77D0F;
-  stroke-width: 6;
+  stroke-width: 5;
   stroke-miterlimit: 10;
+}
+
+.loadingSpinner-complete
+{
+  fill: none;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  transform-origin: 50% 50%;
+  stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	animation: fill 1s ease-out forwards;
+}
+
+.loadingSpinner-checkmark > svg {
+  position: absolute;
+  left: calc(50% - 14px);
+  width: 28px !important;
+  top: calc(50% - 14px);
+  stroke: #74ea96;
+  fill: #74ea96;
+}
+
+.loadingSpinner-checkmarkTransition-appear {
+  opacity: 0.01;
+}
+
+.loadingSpinner-checkmarkTransition-appear.loadingSpinner-checkmarkTransition-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-out;
 }
 
 @keyframes load {
@@ -30,23 +64,6 @@
  }
 }
 
-@-webkit-keyframes check {
- 0% {
-   stroke-dashoffset: -110;
-}
- 100% {
-   stroke-dashoffset: 0;
- }
-}
-@keyframes check {
- 0% {
-   stroke-dashoffset: -110;
-}
- 100% {
-   stroke-dashoffset: 0;
- }
-}
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -56,31 +73,6 @@
   }
 }
 
-@-webkit-keyframes spin-fill {
-  0% {
-	-webkit-transform: rotate(0deg);
-  }
-  100% {
-	-webkit-transform: rotate(720deg);
-  }
-}
-@keyframes spin-fill {
-  0% {
-	transform: rotate(0deg);
-  }
-  100% {
-	transform: rotate(720deg);
-  }
-}
-
-@-webkit-keyframes fill {
-  0% {
-	stroke-dashoffset: 285;
-  }
-  100% {
-	stroke-dashoffset: 0;
-  }
-}
 @keyframes fill {
   0% {
 	stroke-dashoffset: 285;
@@ -88,10 +80,4 @@
   100% {
 	stroke-dashoffset: 0;
   }
-}
-
-.success
-{
-  stroke: #009900;
-  transition: stroke .6s;
 }

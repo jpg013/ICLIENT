@@ -46,7 +46,7 @@ class Login extends Component {
     if (this.props.status === 'authenticated') {
       setTimeout(function() {
         browserHistory.push('/');
-      }, 250)
+      }, 1000);
     }
   }
 

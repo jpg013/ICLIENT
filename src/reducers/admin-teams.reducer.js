@@ -1,5 +1,5 @@
 import InitialState from './initial-state';
-import { Map, List, OrderedMap } from 'immutable';
+import { Map, OrderedMap } from 'immutable';
 import { REQUEST_TEAMS, RECEIVE_TEAMS } from '../actions/types';
 import moment from 'moment';
 

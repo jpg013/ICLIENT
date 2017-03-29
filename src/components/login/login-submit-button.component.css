@@ -22,12 +22,12 @@
 
 .login-submitBtn-downloadSpinner {
   position: absolute;
-  left: calc(50% - 1.5rem);
-  top: calc(50% - 1.5rem);
+  left: calc(50% - 2rem);
+  top: calc(50% - 2rem);
 }
 
 .login-submitBtn-downloadSpinner svg {
-  width: 3rem;
+  width: 4rem;
 }
 
 .login-submitBtn_inactive {

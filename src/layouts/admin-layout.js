@@ -6,7 +6,6 @@ import AdminDock from '../containers/adminDock/admin-dock';
 import { Link } from 'react-router';
 import DashboardIcon from '../icons/dashboard.icon';
 import PeopleIcon from '../icons/people.icon';
-import AdminTeamForm from '../containers/adminTeams/admin-team-form';
 import './admin-layout.css'
 
 class AdminLayout extends Component {

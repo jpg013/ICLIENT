@@ -21,10 +21,12 @@ const buildApiUrl = (endpoint, method, opts) => {
 const buildApiConfig = (url, method, opts) => {
   let config = {};
   if (method === 'get') {
-    return config;
+    // Do nothing
+  } else if (method === 'post') {
+    config.body = JSON.stringify(opts.body)
   }
+  return config;
 }
-
 
 const callApi = (endpoint, method, opts = {}) => {
   const headers = {
@@ -38,9 +40,6 @@ const callApi = (endpoint, method, opts = {}) => {
     .then(function(resp) {
       if (resp.status === 401) {
         browserHistory.push('/logout');
-      }
-      if (resp.success === false) {
-        throw new Error(resp.msg);
       }
       return resp.json();
     })

@@ -104,6 +104,7 @@
 }
 
 .addTeamForm-actionBtn {
+  position: relative;
   background: transparent;
   height: 4rem;
   width: 15rem;
@@ -112,13 +113,22 @@
   align-items: center;
   border-radius: 5px;
   color: currentColor;
-  font-size: 1.4rem;
   border: 1px solid #6d9cbe;
+  transition: opacity 200ms, font-size 100ms;
 }
 
 .addTeamForm-actionBtn:hover {
   cursor: pointer;
   border: 1px solid #79bbe0;
+}
+
+.addTeamForm-actionBtn_disabled {
+  opacity: 0.4;
+}
+
+.addTeamForm-actionBtn_disabled:hover {
+  border: 1px solid #6d9cbe;
+  cursor: default;
 }
 
 .addTeamForm-actionBtn_submitting {
@@ -129,4 +139,23 @@
 
 .addTeamForm-actionBtn_submitting:hover {
   cursor: default;
+}
+
+.addTeamForm-actionBtn_submitText {
+  font-size: 1.4em;
+  font-weight: 300;
+}
+
+.addTeamForm-actionBtn_submitting .addTeamForm-actionBtn_submitText {
+  font-size: 0;
+}
+
+.addTeamForm-actionBtn_loading {
+  position: absolute;
+  left: calc(50% - 1.5rem);
+  top: calc(50% - 1.5rem);
+}
+
+.addTeamForm-actionBtn_loading svg {
+  width: 3rem;
 }
