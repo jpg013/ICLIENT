@@ -31,6 +31,7 @@ export const REQUEST_TEAMS = "REQUEST_ADMIN_TEAMS";
 export const RECEIVE_TEAMS = "RECEIVE_ADMIN_TEAMS";
 export const REQUEST_ADD_TEAM = "REQUEST_ADD_TEAM";
 export const RECEIVE_ADD_TEAM = "RECEIEVE_ADD_TEAM";
+export const ERROR_ADD_TEAM = "ERROR_ADD_TEAM";
 
 
 /* Admin */

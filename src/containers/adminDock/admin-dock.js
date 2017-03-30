@@ -21,11 +21,12 @@ class AdminDock extends Component {
   renderAdminDockContent() {
     if (!this.props.dockState.get('isOpen')) return;
 
-    switch(this.props.dockState.getIn(['persistedModel', 'type'])) {
+    switch(this.props.dockState.getIn(['model', 'type'])) {
       case 'team':
         return (
           <AdminTeamForm
-            persistedModel={this.props.dockState.get('persistedModel')}
+            model={this.props.dockState.get('model')}
+            error={this.props.dockState.get('error')}
             closeHandler={() => this.props.closeAdminDock()}
             submitHandler={(formType, data) => this.handleSubmitForm(formType, data)}
           />

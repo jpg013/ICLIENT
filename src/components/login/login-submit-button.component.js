@@ -8,7 +8,7 @@ const LoginSubmitButton = ({onButtonClick, status}) => {
   const getBtnClassName = () => classNames('login-submitBtn', {'login-submitBtn_inactive': (status === 'authenticating' || status === 'authenticated')});
   const renderLoadingSpinner = () => {
     console.log(status);
-    return ( <div className="login-submitBtn-downloadSpinner"><LoadingSpinner success={status === 'authenticated'}/></div> )
+    return ( <div className="login-submitBtn-downloadSpinner"><LoadingSpinner success={status === 'authenticated'} /></div> )
   }
 
   return (

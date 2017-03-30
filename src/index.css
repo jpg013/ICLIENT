@@ -153,3 +153,16 @@ select:focus {
   width: 28px;
   height: 28px;
 }
+
+/*
+ ** Enter Transitions
+ */
+
+.fadeIn-enter {
+ opacity: 0.01;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+ opacity: 1;
+ transition: opacity 200ms ease-in;
+}

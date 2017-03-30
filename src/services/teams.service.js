@@ -7,8 +7,7 @@ import { generateUUID } from '../library/index';
 const modelStates = {
   dirty: 'dirty',
   persisting: 'persisting',
-  persisted: 'persisted',
-  new: 'new'
+  pristine: 'pristine',
 }
 
 const teamModel = Map({
@@ -24,9 +23,14 @@ const teamModel = Map({
  */
 
 const buildNewTeamModel = () => {
-  console.log(generateUUID());
-  return teamModel.merge(Map({state: modelStates.new, tmpId: generateUUID()}));
+  return teamModel.merge(Map({state: modelStates.pristine, tmpId: generateUUID()}));
 }
+
+/**
+ * Creates an existing team model
+ */
+
+ const buildTeamModel = data => teamModel.merge(Map({state:  modelStates.pristine, ...data}));
 
 const getSaveProps = model => {
   return {
@@ -54,5 +58,6 @@ const isModelValid = model => {
 export {
   isModelValid,
   buildNewTeamModel,
-  getSaveProps
+  getSaveProps,
+  buildTeamModel
 }

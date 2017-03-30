@@ -1,8 +1,11 @@
 import React, { PropTypes, Component } from 'react';
-import { is } from 'immutable';
+import { is, Map } from 'immutable';
 import { isModelValid } from '../../services/teams.service';
+import { updateAdminDockModel } from '../../actions/admin-dock.actions';
 import ClearIcon from '../../icons/clear.icon';
+import ErrorIcon from '../../icons/error.icon';
 import LoadingSpinner from '../../components/loadingSpinner/loading-spinner';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
 import './admin-team-form.css';
 
@@ -11,9 +14,17 @@ class AdminTeamForm extends Component {
     super(props);
     this.state = {
       formRef: undefined,
-      errors: [],
-      updatedModel: props.persistedModel
+      model: props.model
     };
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({model: props.model});
+    if (props.model.get('state') === 'pristine') {
+      setTimeout(() => {
+        this.props.closeHandler();
+      }, 1000);
+    }
   }
 
   removeInputFocus() {
@@ -26,19 +37,9 @@ class AdminTeamForm extends Component {
     e.target.parentElement.classList.add('addTeamForm-formField_active');
   }
 
-  renderErrors() {
-    return this.state.errors.map(cur => <span>{cur}</span>)
-  }
-
   onSubmit() {
-    if (!isModelValid(this.state.updatedModel)) return;
-    const updatedModel = this.state.updatedModel.set('state', 'persisting');
-    // Reset Errors
-    this.setState({
-      errors: [],
-      updatedModel
-    });
-    this.props.submitHandler(updatedModel);
+    if (!isModelValid(this.state.model)) return;
+    this.props.submitHandler(this.state.model);
   }
 
   render() {
@@ -47,15 +48,15 @@ class AdminTeamForm extends Component {
       this.setState({formRef: el});
     }
 
-    const isFormValid = () => isModelValid(this.state.updatedModel);
-    const isFormSubmitting = () => this.state.updatedModel.get('state') === 'persisting';
-    const isFormPristine = () => is(this.props.persistedModel, this.state.updatedModel);
+    const isFormValid = () => isModelValid(this.state.model);
+    const isFormSubmitting = () => this.state.model.get('state') === 'persisting';
+    const isFormSuccess = () => this.state.model.get('state') === 'pristine';
 
     const getBtnClassNames = () => {
       return classNames(
         'addTeamForm-actionBtn',
-        {'addTeamForm-actionBtn_disabled': isFormPristine() || !isFormValid()},
-        {'addTeamForm-actionBtn_submitting': isFormSubmitting()
+        {'addTeamForm-actionBtn_disabled': !isFormValid()},
+        {'addTeamForm-actionBtn_submitting': isFormSubmitting() || isFormSuccess()
       });
     }
 
@@ -64,14 +65,23 @@ class AdminTeamForm extends Component {
     const getDefaultAuthVal = () => '';
     const getDefaultImageUrl = () => '';
 
-    const getFormTitle = () => this.props.persistedModel.get('state') === 'new' ? 'Create a new team' : this.props.persistedModel.get('name');
-    const getFormSubtitle = () => this.props.persistedModel.get('state') === 'new' ? 'Complete the form below to create a new team' : null;
-    const handleNameChange = val => this.setState({updatedModel: this.state.updatedModel.set('name', val)});
-    const handleConnectionChange = val => this.setState({updatedModel: this.state.updatedModel.set('neo4jConnection', val)});
-    const handleAuthChange = val => this.setState({updatedModel: this.state.updatedModel.set('neo4jAuth', val)});
-    const handleImageUrlChange = val => this.setState({updatedModel: this.state.updatedModel.set('imageURL', val)});
+    const getFormTitle = () => this.state.model.get('tmpId') ? 'Create a new team' : this.state.model.get('name');
+    const getFormSubtitle = () => this.state.model.get('tmpId') ? 'Complete the form below to create a new team' : null;
 
-    const renderBtnLoading = () => isFormSubmitting() ? ( <div className="addTeamForm-actionBtn_loading"><LoadingSpinner /></div> ) : undefined;
+    const updateModel = update => {
+      const updatedModel = this.state.model.merge(Map(Object.assign({}, update)));
+      this.setState({model: updatedModel});
+    }
+    const renderBtnLoading = () => isFormSubmitting() || isFormSuccess() ? ( <div className="addTeamForm-actionBtn_loading"><LoadingSpinner success={isFormSuccess()}/></div> ) : undefined;
+
+    const renderError = () => {
+      return (
+        <div className="addTeamForm-error" key="addTeamForm-errorTransitionkey">
+          <div className="addTeamForm-error_icon"><ErrorIcon /></div>
+          <span className="addTeamForm-error_text">{this.props.error}</span>
+        </div>
+      )
+    }
 
     return (
       <div>
@@ -83,7 +93,12 @@ class AdminTeamForm extends Component {
           </div>
         </div>
         <div className="addTeamForm-form" ref={input => setFormRef(input)}>
-          <div className="addTeamForm-errors">{this.renderErrors()}</div>
+          <ReactCSSTransitionGroup
+            transitionName="fadeIn"
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={300}>
+            {this.props.error && renderError()}
+          </ReactCSSTransitionGroup>
 
           <div className="addTeamForm-formField">
             <label htmlFor="add-team-form-name" className="addTeamForm-formField_label">Team Name</label>
@@ -92,7 +107,7 @@ class AdminTeamForm extends Component {
               id="add-team-form-name"
               onBlur={e => this.removeInputFocus(e)}
               onFocus={e => this.addInputFocus(e)}
-              onChange={e => handleNameChange(e.target.value)}
+              onChange={e => updateModel({name: e.target.value})}
               readOnly={isFormSubmitting()}
               className="addTeamForm-formField_input"
               placeholder="Team Name"
@@ -107,7 +122,7 @@ class AdminTeamForm extends Component {
               id="add-team-form-connection"
               onBlur={e => this.removeInputFocus(e)}
               onFocus={e => this.addInputFocus(e)}
-              onChange={e => handleConnectionChange(e.target.value)}
+              onChange={e => updateModel({neo4jConnection: e.target.value})}
               className="addTeamForm-formField_input"
               readOnly={isFormSubmitting()}
               placeholder="Neo4j Connection String"
@@ -122,7 +137,7 @@ class AdminTeamForm extends Component {
               id="add-team-form-auth"
               onBlur={e => this.removeInputFocus(e)}
               onFocus={e => this.addInputFocus(e)}
-              onChange={e => handleAuthChange(e.target.value)}
+              onChange={e => updateModel({neo4jAuth: e.target.value})}
               className="addTeamForm-formField_input"
               readOnly={isFormSubmitting()}
               placeholder="Neo4j Auth String"
@@ -137,7 +152,7 @@ class AdminTeamForm extends Component {
               id="add-team-image-url"
               onBlur={e => this.removeInputFocus(e)}
               onFocus={e => this.addInputFocus(e)}
-              onChange={e => handleImageUrlChange(e.target.value)}
+              onChange={e => updateModel({imageURL: e.target.value})}
               className="addTeamForm-formField_input"
               readOnly={isFormSubmitting()}
               placeholder="Image URL"
@@ -159,7 +174,8 @@ class AdminTeamForm extends Component {
 AdminTeamForm.propTypes = {
   closeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
-  persistedModel: PropTypes.object.isRequired
+  model: PropTypes.object.isRequired,
+  error: PropTypes.string
 }
 
 export default AdminTeamForm;

@@ -23,6 +23,7 @@ export default Map({
   }),
   adminDock: Map({
     isOpen: false,
-    persistedModel: undefined
+    model: undefined,
+    error: ''
   })
 });

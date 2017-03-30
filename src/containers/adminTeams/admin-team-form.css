@@ -43,10 +43,33 @@
   padding: 1rem;
 }
 
-.addTeamForm-errors {
+.addTeamForm-error {
   font-size: 1.4rem;
   font-weight: 300;
   color: #ea7474;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.addTeamForm-error_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  height: 100%;
+  width: 2rem;
+}
+
+.addTeamForm-error_icon > svg {
+  width: 18px;
+  fill: #ea7474;
+}
+
+.addTeamForm-error_text {
+  padding-left: 0.2rem;
+  margin-top: -0.2rem;
 }
 
 .addTeamForm-formField {
@@ -152,10 +175,10 @@
 
 .addTeamForm-actionBtn_loading {
   position: absolute;
-  left: calc(50% - 1.5rem);
-  top: calc(50% - 1.5rem);
+  left: calc(50% - 1.8rem);
+  top: calc(50% - 1.8rem);
 }
 
 .addTeamForm-actionBtn_loading svg {
-  width: 3rem;
+  width: 3.6rem;
 }
