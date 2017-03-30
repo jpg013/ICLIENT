@@ -31,7 +31,7 @@ const adminTeamCard = ({team, editHandler, removeHandler}) => {
           <div className="adminTeamCard-StatItem">
             <div className="adminTeamCard-StatItemTop">
               <div className="adminTeamCard-StatItemTop_icon">
-                <PeopleIcon />
+                <UserIcon />
               </div>
               <div className="adminTeamCard-StatItemTop_data">
                 {team.get('userCount') || 0}

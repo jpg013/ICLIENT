@@ -1,6 +1,6 @@
 import sockjs from 'sockjs-client';
 import { getAuthToken } from '../services/storage.service';
-import { socketSyncUser, socketRoomNotifcation } from '../actions/socket.actions';
+import { socketSyncUser, socketRoomNotification } from '../actions/socket.actions';
 import { storage } from '../services/storage.service';
 import { List } from 'immutable';
 
@@ -12,6 +12,10 @@ function initSockJS(store) {
   let status = 'disconnected';
   let pending = List();
   const socketURL = 'http://localhost:3000/_sock';
+
+  const resetPending = () => {
+    pending = List();
+  }
 
   const onSocketOpen = () => {
     status = 'connected';
@@ -28,7 +32,7 @@ function initSockJS(store) {
       case 'SOCKET_SYNC_USER':
         return store.dispatch(socketSyncUser(msg.payload));
       case 'SOCKET_ROOM_NOTIFICATION':
-        return store.dispatch(socketRoomNotifcation(msg.room, msg.data));
+        return store.dispatch(socketRoomNotification(msg.payload));
       default:
         return;
     }
@@ -56,19 +60,24 @@ function initSockJS(store) {
   }
 
   const identifySocket = () => {
-    const token = getAuthToken();
-    if (!token) { return; }
+    const authToken = getAuthToken();
+    if (!authToken) { return; }
     const msg = {
       event: 'SOCKET_IDENTIFY_CONNECTION',
-      payload: token
+      payload: {
+        authToken
+      }
     };
     sendMessage(msg);
   }
 
-  const joinRoom = (roomName) => {
+  const joinRoom = (room) => {
     const msg = {
       event: 'SOCKET_JOIN_ROOM',
-      payload: getAuthToken()
+      payload: {
+        authToken: getAuthToken(),
+        room: room
+      }
     };
     sendMessage(msg);
   }

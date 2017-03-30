@@ -1,5 +1,6 @@
 import { Map, OrderedMap } from 'immutable';
 import { generateUUID } from '../library/index';
+import moment from 'moment';
 
 /**
  * User States
@@ -30,7 +31,23 @@ const buildNewTeamModel = () => {
  * Creates an existing team model
  */
 
- const buildTeamModel = data => teamModel.merge(Map({state:  modelStates.pristine, ...data}));
+ const buildTeamModel = data => {
+   const createdDate = new Date(data.createdDate);
+   const lastActivityDate = data.lastActivityDate ? new Date(data.lastActivityDate) : undefined;
+   const formattedLastActivityDate = lastActivityDate ? moment(lastActivityDate).format('MMMM Do, YYYY') : 'never';
+   const formattedCreatedDate = moment(createdDate).format('MMMM Do, YYYY');
+   const dataMap = Map({
+    ...data,
+     createdDate,
+     formattedCreatedDate,
+     lastActivityDate,
+     formattedLastActivityDate,
+   });
+
+   return teamModel
+    .merge(Map({state: modelStates.pristine}))
+    .merge(dataMap);
+ }
 
 const getSaveProps = model => {
   return {
@@ -55,9 +72,19 @@ const isModelValid = model => {
   return true;
 }
 
+const buildTeamCollectionMap = (data) => {
+  if (!data) { return; }
+  return data
+    .map(buildTeamModel)
+    .reduce((acc, cur) => {
+      return acc.set(cur.get('id'), cur);
+    }, OrderedMap());
+}
+
 export {
   isModelValid,
   buildNewTeamModel,
   getSaveProps,
-  buildTeamModel
+  buildTeamModel,
+  buildTeamCollectionMap
 }
